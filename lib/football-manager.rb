@@ -1,3 +1,3 @@
-require_relative './football-manager/generator'
-require_relative './football-manager/kickoff'
-require_relative './football-manager/team'
+require 'football-manager/generator'
+require 'football-manager/kickoff'
+require 'football-manager/team'
