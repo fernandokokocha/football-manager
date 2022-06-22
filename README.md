@@ -6,4 +6,4 @@ ruby 3.1.2
 
 ## Run tests
 
-`bundle exec rspec`
+`bundle exec rspec .`
