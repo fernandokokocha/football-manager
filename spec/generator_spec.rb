@@ -1,4 +1,4 @@
-require "football-manager"
+require "football_manager"
 
 RSpec.describe Generator do
   describe "#generate" do
