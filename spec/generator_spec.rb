@@ -8,9 +8,9 @@ RSpec.describe Generator do
       generator = Generator.new
       match = generator.generate(team_1, team_2)
       expect(match).to eq(KickoffAction.new([
-        KickoffEvent.new(yards_from: 35, yards_travelled: 50),
+        KickoffEvent.new(yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
         ReceptionEvent.new,
-        ReturnEvent.new(yards_returned: 30),
+        ReturnEvent.new(yards_returned: Yards.new(30)),
         TackleEvent.new,
       ]))
     end
@@ -22,9 +22,9 @@ RSpec.describe Generator do
       return_event_generator = ConstantReturnEventGenerator.new(yards_returned: 40)
       match = generator.generate(team_1, team_2, return_event_generator)
       expect(match).to eq(KickoffAction.new([
-        KickoffEvent.new(yards_from: 35, yards_travelled: 50),
+        KickoffEvent.new(yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
         ReceptionEvent.new,
-        ReturnEvent.new(yards_returned: 40),
+        ReturnEvent.new(yards_returned: Yards.new(40)),
         TackleEvent.new,
       ]))
     end
@@ -35,10 +35,12 @@ RSpec.describe Generator do
       generator = Generator.new
       return_event_generator = RandomReturnEventGenerator.new
       match = generator.generate(team_1, team_2, return_event_generator)
-      expect(match.args[0][0]).to eq(KickoffEvent.new(yards_from: 35, yards_travelled: 50))
-      expect(match.args[0][1]).to eq(ReceptionEvent.new)
-      expect(match.args[0][2].args[0][:yards_returned]).to be_between(30, 50)
-      expect(match.args[0][3]).to eq(TackleEvent.new)
+      expect(match).to eq(KickoffAction.new([
+        KickoffEvent.new(yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
+        ReceptionEvent.new,
+        ReturnEvent.new(yards_returned: YardsFromRange.new(nil, 30, 50)),
+        TackleEvent.new,
+      ]))
     end
   end
 end
