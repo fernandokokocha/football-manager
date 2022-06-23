@@ -1,5 +1,5 @@
-class Kickoff
-  def initialize(args)
+class KickoffAction
+  def initialize(*args)
     @args = args
   end
 
