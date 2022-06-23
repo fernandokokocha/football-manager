@@ -13,3 +13,10 @@ class ConstantReturnEventGenerator
     ReturnEvent.new(*@args)
   end
 end
+
+class RandomReturnEventGenerator
+  def call
+    yards = rand(30..50)
+    ReturnEvent.new(yards_returned: yards)
+  end
+end

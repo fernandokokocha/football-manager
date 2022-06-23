@@ -28,5 +28,17 @@ RSpec.describe Generator do
         TackleEvent.new,
       ]))
     end
+
+    it "generates kickoff off with random data when random generator provided" do
+      team_1 = Team.new
+      team_2 = Team.new
+      generator = Generator.new
+      return_event_generator = RandomReturnEventGenerator.new
+      match = generator.generate(team_1, team_2, return_event_generator)
+      expect(match.args[0][0]).to eq(KickoffEvent.new(yards_from: 35, yards_travelled: 50))
+      expect(match.args[0][1]).to eq(ReceptionEvent.new)
+      expect(match.args[0][2].args[0][:yards_returned]).to be_between(30, 50)
+      expect(match.args[0][3]).to eq(TackleEvent.new)
+    end
   end
 end
