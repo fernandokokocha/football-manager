@@ -1,10 +1,1 @@
-require "football_manager/events"
-require "football_manager/generator"
-require "football_manager/kickoff_action"
-require "football_manager/kickoff_event_generator"
-require "football_manager/player"
-require "football_manager/return_event_generator"
-require "football_manager/roster"
-require "football_manager/rules"
-require "football_manager/team"
-require "football_manager/yards"
+Dir[File.join(__dir__, "football_manager", "*.rb")].each { |file| require file }
