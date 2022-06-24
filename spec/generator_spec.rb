@@ -40,5 +40,17 @@ RSpec.describe Generator do
                                               TackleEvent.new,
                                             ]))
     end
+
+    it "generates kickoff off with different data when kickoff event generator provided" do
+      return_event_generator = DefaultReturnEventGenerator.new
+      kickoff_event_generator = ConstantKickoffEventGenerator.new(yards_travelled: 15)
+      match = generator.generate(roster_1, roster_2, return_event_generator, kickoff_event_generator)
+      expect(match).to eq(KickoffAction.new(offence_team: team_1, phases: [
+                                              KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_travelled: Yards.new(15)),
+                                              ReceptionEvent.new,
+                                              ReturnEvent.new(yards_returned: Yards.new(30)),
+                                              TackleEvent.new,
+                                            ]))
+    end
   end
 end
