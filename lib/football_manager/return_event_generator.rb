@@ -20,6 +20,6 @@ class RandomReturnEventGenerator
     first = 30
     last = 50
     yards = rand(first..last)
-    ReturnEvent.new(yards_returned: YardsFromRange.new(yards, first, last))
+    ReturnEvent.new(yards_returned: YardsFromRange.new(first, last, yards))
   end
 end

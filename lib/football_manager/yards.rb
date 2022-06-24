@@ -11,8 +11,8 @@ class Yards
 end
 
 class YardsFromRange
-  def initialize(number, first, last)
-    @number, @first, @last = number, first, last
+  def initialize(first, last, number = -1)
+    @first, @last, @number = first, last, number
   end
 
   attr_reader :number, :first, :last

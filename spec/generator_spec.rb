@@ -38,7 +38,7 @@ RSpec.describe Generator do
       expect(match).to eq(KickoffAction.new([
         KickoffEvent.new(yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
         ReceptionEvent.new,
-        ReturnEvent.new(yards_returned: YardsFromRange.new(nil, 30, 50)),
+        ReturnEvent.new(yards_returned: YardsFromRange.new(30, 50)),
         TackleEvent.new,
       ]))
     end
