@@ -11,8 +11,9 @@ RSpec.describe KickoffGenerator do
     let(:event_generators) { EventGenerators.new(generators_params) }
     let(:kickoff_generator) { KickoffGenerator.new }
 
+    subject(:kickoff) { kickoff_generator.generate(roster_1, roster_2, event_generators) }
+
     it "generates kickoff off with proper data" do
-      kickoff = kickoff_generator.generate(roster_1, roster_2, event_generators)
       expect(kickoff).to eq(KickoffAction.new(offence_team: team_1, phases: [
                                                 KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
                                                 ReceptionEvent.new,
@@ -26,7 +27,6 @@ RSpec.describe KickoffGenerator do
       let(:generators_params) { { return: return_event_generator } }
 
       it "generates kickoff off with different data" do
-        kickoff = kickoff_generator.generate(roster_1, roster_2, event_generators)
         expect(kickoff).to eq(KickoffAction.new(offence_team: team_1, phases: [
                                                   KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
                                                   ReceptionEvent.new,
@@ -41,7 +41,6 @@ RSpec.describe KickoffGenerator do
       let(:generators_params) { { return: return_event_generator } }
 
       it "generates kickoff off with random data" do
-        kickoff = kickoff_generator.generate(roster_1, roster_2, event_generators)
         expect(kickoff).to eq(KickoffAction.new(offence_team: team_1, phases: [
                                                   KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
                                                   ReceptionEvent.new,
@@ -56,7 +55,6 @@ RSpec.describe KickoffGenerator do
       let(:generators_params) { { kickoff: kickoff_event_generator } }
 
       it "generates kickoff off with different data " do
-        kickoff = kickoff_generator.generate(roster_1, roster_2, event_generators)
         expect(kickoff).to eq(KickoffAction.new(offence_team: team_1, phases: [
                                                   KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_travelled: Yards.new(15)),
                                                   ReceptionEvent.new,
