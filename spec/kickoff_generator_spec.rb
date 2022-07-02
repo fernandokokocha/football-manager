@@ -5,8 +5,9 @@ RSpec.describe KickoffGenerator do
     let(:team_1) { Team.new }
     let(:team_2) { Team.new }
     let(:kicker) { Player.new(position: "K", name: "Przemek") }
-    let(:roster_1) { Roster.new(team: team_1, kicker: kicker) }
-    let(:roster_2) { Roster.new(team: team_2, kicker: nil) }
+    let(:returner) { Player.new(position: "KR", name: "Bartek") }
+    let(:roster_1) { Roster.new(team: team_1, kicker: kicker, returner: nil) }
+    let(:roster_2) { Roster.new(team: team_2, kicker: nil, returner: returner) }
     let(:generators_params) { {} }
     let(:event_generators) { EventGenerators.new(generators_params) }
     let(:kickoff_generator) { KickoffGenerator.new }
@@ -19,8 +20,8 @@ RSpec.describe KickoffGenerator do
                                               ending_yards: YardsInPitch.new(from_left: 55),
                                               phases: [
                                                 KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
-                                                ReceptionEvent.new,
-                                                ReturnEvent.new(yards_returned: Yards.new(30)),
+                                                ReceptionEvent.new(player: returner),
+                                                ReturnEvent.new(returner: returner, yards_returned: Yards.new(30)),
                                                 TackleEvent.new,
                                               ]))
     end
@@ -35,8 +36,8 @@ RSpec.describe KickoffGenerator do
                                                 ending_yards: YardsInPitch.new(from_left: 45),
                                                 phases: [
                                                   KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
-                                                  ReceptionEvent.new,
-                                                  ReturnEvent.new(yards_returned: Yards.new(40)),
+                                                  ReceptionEvent.new(player: returner),
+                                                  ReturnEvent.new(returner: returner, yards_returned: Yards.new(40)),
                                                   TackleEvent.new,
                                                 ]))
       end
@@ -53,8 +54,8 @@ RSpec.describe KickoffGenerator do
                                                 ending_yards: YardsInPitch.new(from_left: ending_yards_num),
                                                 phases: [
                                                   KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
-                                                  ReceptionEvent.new,
-                                                  ReturnEvent.new(yards_returned: YardsFromRange.new(30, 50)),
+                                                  ReceptionEvent.new(player: returner),
+                                                  ReturnEvent.new(returner: returner, yards_returned: YardsFromRange.new(30, 50)),
                                                   TackleEvent.new,
                                                 ]))
       end
@@ -70,8 +71,8 @@ RSpec.describe KickoffGenerator do
                                                 ending_yards: YardsInPitch.new(from_left: 20),
                                                 phases: [
                                                   KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_travelled: Yards.new(15)),
-                                                  ReceptionEvent.new,
-                                                  ReturnEvent.new(yards_returned: Yards.new(30)),
+                                                  ReceptionEvent.new(player: returner),
+                                                  ReturnEvent.new(returner: returner, yards_returned: Yards.new(30)),
                                                   TackleEvent.new,
                                                 ]))
       end

@@ -16,20 +16,29 @@ class KickoffEvent
 end
 
 class ReceptionEvent
+  def initialize(player:)
+    @player = player
+  end
+
+  attr_reader :player
+
   def ==(o)
-    self.class == o.class
+    self.class == o.class &&
+      self.player == o.player
   end
 end
 
 class ReturnEvent
-  def initialize(yards_returned:)
+  def initialize(returner:, yards_returned:)
+    @returner = returner
     @yards_returned = yards_returned
   end
 
-  attr_reader :yards_returned
+  attr_reader :returner, :yards_returned
 
   def ==(o)
     self.class == o.class &&
+      self.returner == o.returner &&
       self.yards_returned == o.yards_returned
   end
 end

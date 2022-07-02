@@ -2,7 +2,7 @@ class KickoffGenerator
   def generate(roster_1, roster_2, event_generators)
     phases = [
       event_generators.kickoff.call(roster_1, roster_2),
-      ReceptionEvent.new,
+      ReceptionEvent.new(player: roster_2.returner),
       event_generators.return.call(roster_1, roster_2),
       TackleEvent.new,
     ]
