@@ -1,5 +1,5 @@
 class Roster
-  def initialize(team: nil, kicker: nil)
+  def initialize(team:, kicker:)
     @team = team
     @kicker = kicker
   end

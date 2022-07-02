@@ -4,9 +4,9 @@ RSpec.describe KickoffGenerator do
   describe "#generate" do
     let(:team_1) { Team.new }
     let(:team_2) { Team.new }
-    let(:kicker) { Player.new("K", "Przemek") }
+    let(:kicker) { Player.new(position: "K", name: "Przemek") }
     let(:roster_1) { Roster.new(team: team_1, kicker: kicker) }
-    let(:roster_2) { Roster.new(team: team_2) }
+    let(:roster_2) { Roster.new(team: team_2, kicker: nil) }
     let(:generators_params) { {} }
     let(:event_generators) { EventGenerators.new(generators_params) }
     let(:kickoff_generator) { KickoffGenerator.new }
@@ -47,7 +47,7 @@ RSpec.describe KickoffGenerator do
       let(:generators_params) { { return: return_event_generator } }
 
       it "generates kickoff off with random data" do
-        ending_yards_num = 85 - kickoff.args[0][:phases][2].args[0][:yards_returned].number
+        ending_yards_num = 85 - kickoff.phases[2].yards_returned.number
         expect(kickoff).to eq(KickoffAction.new(kicking_team: team_1,
                                                 starting_yards: YardsInPitch.new(from_left: 35),
                                                 ending_yards: YardsInPitch.new(from_left: ending_yards_num),

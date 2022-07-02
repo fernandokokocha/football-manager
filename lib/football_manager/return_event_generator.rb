@@ -5,13 +5,14 @@ class DefaultReturnEventGenerator
 end
 
 class ConstantReturnEventGenerator
-  def initialize(*args)
-    @args = args
+  def initialize(yards_returned:)
+    @yards_returned = yards_returned
   end
 
+  attr_reader :yards_returned
+
   def call(roster_offence, roster_defence)
-    yards = @args.first[:yards_returned]
-    ReturnEvent.new(yards_returned: Yards.new(yards))
+    ReturnEvent.new(yards_returned: Yards.new(yards_returned))
   end
 end
 
