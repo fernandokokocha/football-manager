@@ -1,11 +1,19 @@
-class KickoffEvent
-  def initialize(kicker:, yards_from:, yards_diff:)
-    @kicker = kicker
-    @yards_from = yards_from
+class Event
+  def initialize(yards_diff:)
     @yards_diff = yards_diff
   end
 
-  attr_reader :kicker, :yards_from, :yards_diff
+  attr_reader :yards_diff
+end
+
+class KickoffEvent < Event
+  def initialize(kicker:, yards_from:, yards_diff:)
+    @kicker = kicker
+    @yards_from = yards_from
+    super(yards_diff: yards_diff)
+  end
+
+  attr_reader :kicker, :yards_from
 
   def ==(o)
     self.class == o.class &&
@@ -15,13 +23,13 @@ class KickoffEvent
   end
 end
 
-class ReceptionEvent
+class ReceptionEvent < Event
   def initialize(player:, yards_diff:)
     @player = player
-    @yards_diff = yards_diff
+    super(yards_diff: yards_diff)
   end
 
-  attr_reader :player, :yards_diff
+  attr_reader :player
 
   def ==(o)
     self.class == o.class &&
@@ -30,13 +38,13 @@ class ReceptionEvent
   end
 end
 
-class ReturnEvent
+class ReturnEvent < Event
   def initialize(returner:, yards_diff:)
     @returner = returner
-    @yards_diff = yards_diff
+    super(yards_diff: yards_diff)
   end
 
-  attr_reader :returner, :yards_diff
+  attr_reader :returner
 
   def ==(o)
     self.class == o.class &&
@@ -45,12 +53,10 @@ class ReturnEvent
   end
 end
 
-class TackleEvent
+class TackleEvent < Event
   def initialize(yards_diff:)
-    @yards_diff = yards_diff
+    super(yards_diff: yards_diff)
   end
-
-  attr_reader :yards_diff
 
   def ==(o)
     self.class == o.class &&
@@ -58,13 +64,13 @@ class TackleEvent
   end
 end
 
-class TouchdownEvent
+class TouchdownEvent < Event
   def initialize(player:, yards_diff:)
     @player = player
-    @yards_diff = yards_diff
+    super(yards_diff: yards_diff)
   end
 
-  attr_reader :player, :yards_diff
+  attr_reader :player
 
   def ==(o)
     self.class == o.class &&
