@@ -1,5 +1,5 @@
 class DefaultTackleEventGenerator
   def call(roster_offence, roster_defence, current_yards)
-    TackleEvent.new
+    TackleEvent.new(yards_diff: Yards.new(0))
   end
 end
