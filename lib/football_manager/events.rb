@@ -48,3 +48,16 @@ class TackleEvent
     self.class == o.class
   end
 end
+
+class TouchdownEvent
+  def initialize(player:)
+    @player = player
+  end
+
+  attr_reader :player
+
+  def ==(o)
+    self.class == o.class &&
+      self.player == o.player
+  end
+end

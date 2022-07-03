@@ -77,5 +77,22 @@ RSpec.describe KickoffGenerator do
                                                 ]))
       end
     end
+
+    describe "when scoring return event generator provided" do
+      let(:return_event_generator) { ScoringReturnEventGenerator.new }
+      let(:generators_params) { { return: return_event_generator } }
+
+      it "generates kickoff off with different data " do
+        expect(kickoff).to eq(KickoffAction.new(kicking_team: team_1,
+                                                starting_yards: YardsInPitch.new(from_left: 35),
+                                                ending_yards: YardsInPitch.new(from_left: 0),
+                                                phases: [
+                                                  KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_travelled: Yards.new(50)),
+                                                  ReceptionEvent.new(player: returner),
+                                                  ReturnEvent.new(returner: returner, yards_returned: Yards.new(85)),
+                                                  TouchdownEvent.new(player: returner),
+                                                ]))
+      end
+    end
   end
 end
