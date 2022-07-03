@@ -1,5 +1,5 @@
 class DefaultKickoffEventGenerator
-  def call(roster_offence, roster_defence)
+  def call(roster_offence, roster_defence, current_yards)
     KickoffEvent.new(kicker: roster_offence.kicker, yards_from: Yards.new(Rules::KICKOFF_YARDS), yards_travelled: Yards.new(50))
   end
 end
@@ -11,7 +11,7 @@ class ConstantKickoffEventGenerator
 
   attr_reader :yards_travelled
 
-  def call(roster_offence, roster_defence)
+  def call(roster_offence, roster_defence, current_yards)
     KickoffEvent.new(kicker: roster_offence.kicker, yards_from: Yards.new(Rules::KICKOFF_YARDS), yards_travelled: Yards.new(yards_travelled))
   end
 end
