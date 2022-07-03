@@ -19,10 +19,10 @@ RSpec.describe KickoffGenerator do
                                               starting_yards: YardsInPitch.new(from_left: 35),
                                               ending_yards: YardsInPitch.new(from_left: 55),
                                               phases: [
-                                                KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50)),
-                                                ReceptionEvent.new(player: returner, yards_diff: Yards.new(0)),
-                                                ReturnEvent.new(returner: returner, yards_diff: Yards.new(-30)),
-                                                TackleEvent.new(yards_diff: Yards.new(0)),
+                                                KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50), next_event: :reception),
+                                                ReceptionEvent.new(player: returner, yards_diff: Yards.new(0), next_event: :return),
+                                                ReturnEvent.new(returner: returner, yards_diff: Yards.new(-30), next_event: :tackle),
+                                                TackleEvent.new(yards_diff: Yards.new(0), next_event: nil),
                                               ]))
     end
 
@@ -35,10 +35,10 @@ RSpec.describe KickoffGenerator do
                                                 starting_yards: YardsInPitch.new(from_left: 35),
                                                 ending_yards: YardsInPitch.new(from_left: 45),
                                                 phases: [
-                                                  KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50)),
-                                                  ReceptionEvent.new(player: returner, yards_diff: Yards.new(0)),
-                                                  ReturnEvent.new(returner: returner, yards_diff: Yards.new(-40)),
-                                                  TackleEvent.new(yards_diff: Yards.new(0)),
+                                                  KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50), next_event: :reception),
+                                                  ReceptionEvent.new(player: returner, yards_diff: Yards.new(0), next_event: :return),
+                                                  ReturnEvent.new(returner: returner, yards_diff: Yards.new(-40), next_event: :tackle),
+                                                  TackleEvent.new(yards_diff: Yards.new(0), next_event: nil),
                                                 ]))
       end
     end
@@ -53,10 +53,10 @@ RSpec.describe KickoffGenerator do
                                                 starting_yards: YardsInPitch.new(from_left: 35),
                                                 ending_yards: YardsInPitch.new(from_left: ending_yards_num),
                                                 phases: [
-                                                  KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50)),
-                                                  ReceptionEvent.new(player: returner, yards_diff: Yards.new(0)),
-                                                  ReturnEvent.new(returner: returner, yards_diff: YardsFromRange.new(-50, -30)),
-                                                  TackleEvent.new(yards_diff: Yards.new(0)),
+                                                  KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50), next_event: :reception),
+                                                  ReceptionEvent.new(player: returner, yards_diff: Yards.new(0), next_event: :return),
+                                                  ReturnEvent.new(returner: returner, yards_diff: YardsFromRange.new(-50, -30), next_event: :tackle),
+                                                  TackleEvent.new(yards_diff: Yards.new(0), next_event: nil),
                                                 ]))
       end
     end
@@ -70,10 +70,10 @@ RSpec.describe KickoffGenerator do
                                                 starting_yards: YardsInPitch.new(from_left: 35),
                                                 ending_yards: YardsInPitch.new(from_left: 20),
                                                 phases: [
-                                                  KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(15)),
-                                                  ReceptionEvent.new(player: returner, yards_diff: Yards.new(0)),
-                                                  ReturnEvent.new(returner: returner, yards_diff: Yards.new(-30)),
-                                                  TackleEvent.new(yards_diff: Yards.new(0)),
+                                                  KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(15), next_event: :reception),
+                                                  ReceptionEvent.new(player: returner, yards_diff: Yards.new(0), next_event: :return),
+                                                  ReturnEvent.new(returner: returner, yards_diff: Yards.new(-30), next_event: :tackle),
+                                                  TackleEvent.new(yards_diff: Yards.new(0), next_event: nil),
                                                 ]))
       end
     end
@@ -87,10 +87,10 @@ RSpec.describe KickoffGenerator do
                                                 starting_yards: YardsInPitch.new(from_left: 35),
                                                 ending_yards: YardsInPitch.new(from_left: 0),
                                                 phases: [
-                                                  KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50)),
-                                                  ReceptionEvent.new(player: returner, yards_diff: Yards.new(0)),
-                                                  ReturnEvent.new(returner: returner, yards_diff: Yards.new(-85)),
-                                                  TouchdownEvent.new(player: returner, yards_diff: Yards.new(0)),
+                                                  KickoffEvent.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50), next_event: :reception),
+                                                  ReceptionEvent.new(player: returner, yards_diff: Yards.new(0), next_event: :return),
+                                                  ReturnEvent.new(returner: returner, yards_diff: Yards.new(-85), next_event: :touchdown),
+                                                  TouchdownEvent.new(player: returner, yards_diff: Yards.new(0), next_event: nil),
                                                 ]))
       end
     end
