@@ -5,6 +5,10 @@ class Event
   end
 
   attr_reader :yards_diff, :next_event
+
+  def touchdown?
+    false
+  end
 end
 
 class KickoffEvent < Event
@@ -82,5 +86,9 @@ class TouchdownEvent < Event
       self.player == o.player &&
       self.yards_diff == o.yards_diff &&
       self.next_event == o.next_event
+  end
+
+  def touchdown?
+    true
   end
 end

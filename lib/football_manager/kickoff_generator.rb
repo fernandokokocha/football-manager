@@ -14,10 +14,13 @@ class KickoffGenerator
 
     ending_yards_num = current_yards
 
+    next_action = phases.last.touchdown? ? :team_1_kickoff : :team_2_attempt
+
     KickoffAction.new(kicking_team: roster_1.team,
                       starting_yards: YardsInPitch.new(from_left: starting_yards_num),
                       ending_yards: YardsInPitch.new(from_left: ending_yards_num),
                       phases: phases,
-                      time_in_seconds: 30)
+                      time_in_seconds: 30,
+                      next_action: next_action)
   end
 end
