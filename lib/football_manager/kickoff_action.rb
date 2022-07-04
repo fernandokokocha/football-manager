@@ -19,4 +19,8 @@ class KickoffAction
       self.time_in_seconds == o.time_in_seconds &&
       self.next_action == o.next_action
   end
+
+  def kickoff?
+    true
+  end
 end
