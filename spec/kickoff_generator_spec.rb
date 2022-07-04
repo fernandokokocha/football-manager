@@ -23,7 +23,8 @@ RSpec.describe KickoffGenerator do
                                                 ReceptionEvent.new(player: returner, yards_diff: Yards.new(0), next_event: :return),
                                                 ReturnEvent.new(returner: returner, yards_diff: Yards.new(-30), next_event: :tackle),
                                                 TackleEvent.new(yards_diff: Yards.new(0), next_event: nil),
-                                              ]))
+                                              ],
+                                              time_in_seconds: 30))
     end
 
     describe "when other generator provided" do
@@ -39,7 +40,8 @@ RSpec.describe KickoffGenerator do
                                                   ReceptionEvent.new(player: returner, yards_diff: Yards.new(0), next_event: :return),
                                                   ReturnEvent.new(returner: returner, yards_diff: Yards.new(-40), next_event: :tackle),
                                                   TackleEvent.new(yards_diff: Yards.new(0), next_event: nil),
-                                                ]))
+                                                ],
+                                                time_in_seconds: 30))
       end
     end
 
@@ -57,7 +59,8 @@ RSpec.describe KickoffGenerator do
                                                   ReceptionEvent.new(player: returner, yards_diff: Yards.new(0), next_event: :return),
                                                   ReturnEvent.new(returner: returner, yards_diff: YardsFromRange.new(-50, -30), next_event: :tackle),
                                                   TackleEvent.new(yards_diff: Yards.new(0), next_event: nil),
-                                                ]))
+                                                ],
+                                                time_in_seconds: 30))
       end
     end
 
@@ -74,7 +77,8 @@ RSpec.describe KickoffGenerator do
                                                   ReceptionEvent.new(player: returner, yards_diff: Yards.new(0), next_event: :return),
                                                   ReturnEvent.new(returner: returner, yards_diff: Yards.new(-30), next_event: :tackle),
                                                   TackleEvent.new(yards_diff: Yards.new(0), next_event: nil),
-                                                ]))
+                                                ],
+                                                time_in_seconds: 30))
       end
     end
 
@@ -91,7 +95,8 @@ RSpec.describe KickoffGenerator do
                                                   ReceptionEvent.new(player: returner, yards_diff: Yards.new(0), next_event: :return),
                                                   ReturnEvent.new(returner: returner, yards_diff: Yards.new(-85), next_event: :touchdown),
                                                   TouchdownEvent.new(player: returner, yards_diff: Yards.new(0), next_event: nil),
-                                                ]))
+                                                ],
+                                                time_in_seconds: 30))
       end
     end
   end

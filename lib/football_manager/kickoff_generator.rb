@@ -17,6 +17,7 @@ class KickoffGenerator
     KickoffAction.new(kicking_team: roster_1.team,
                       starting_yards: YardsInPitch.new(from_left: starting_yards_num),
                       ending_yards: YardsInPitch.new(from_left: ending_yards_num),
-                      phases: phases)
+                      phases: phases,
+                      time_in_seconds: 30)
   end
 end
