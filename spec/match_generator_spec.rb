@@ -8,7 +8,8 @@ RSpec.describe MatchGenerator do
     let(:returner) { Player.new(position: "KR", name: "Bartek") }
     let(:roster_1) { Roster.new(team: team_1, kicker: kicker, returner: nil) }
     let(:roster_2) { Roster.new(team: team_2, kicker: nil, returner: returner) }
-    let(:generators_params) { {} }
+    let(:return_event_generator) { ScoringReturnEventGenerator.new }
+    let(:generators_params) { { return: return_event_generator } }
     let(:event_generators) { EventGenerators.new(generators_params) }
     let(:kickoff_generator) { KickoffGenerator.new }
     let(:match_generator) {

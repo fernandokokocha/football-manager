@@ -10,7 +10,11 @@ class Match
   end
 
   def score
-    "0-180"
+    scoring_actions = actions.count do |action|
+      action.ends_with_touchdown?
+    end
+    away_score = scoring_actions * Rules::TOUCHDOWN_POINTS
+    "0-#{away_score}"
   end
 
   def time_in_seconds

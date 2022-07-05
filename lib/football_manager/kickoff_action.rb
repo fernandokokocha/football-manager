@@ -23,4 +23,8 @@ class KickoffAction
   def kickoff?
     true
   end
+
+  def ends_with_touchdown?
+    phases.last.touchdown?
+  end
 end
