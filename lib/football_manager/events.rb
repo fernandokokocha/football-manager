@@ -1,4 +1,4 @@
-class Event
+class BaseEvent
   def initialize(yards_diff:, next_event:)
     @yards_diff = yards_diff
     @next_event = next_event
@@ -11,7 +11,7 @@ class Event
   end
 end
 
-class KickoffEvent < Event
+class KickoffEvent < BaseEvent
   def initialize(kicker:, yards_from:, yards_diff:, next_event:)
     @kicker = kicker
     @yards_from = yards_from
@@ -29,7 +29,7 @@ class KickoffEvent < Event
   end
 end
 
-class ReceptionEvent < Event
+class ReceptionEvent < BaseEvent
   def initialize(player:, yards_diff:, next_event:)
     @player = player
     super(yards_diff: yards_diff, next_event: next_event)
@@ -45,7 +45,7 @@ class ReceptionEvent < Event
   end
 end
 
-class ReturnEvent < Event
+class ReturnEvent < BaseEvent
   def initialize(returner:, yards_diff:, next_event:)
     @returner = returner
     super(yards_diff: yards_diff, next_event: next_event)
@@ -61,7 +61,7 @@ class ReturnEvent < Event
   end
 end
 
-class TackleEvent < Event
+class TackleEvent < BaseEvent
   def initialize(yards_diff:, next_event:)
     super(yards_diff: yards_diff, next_event: next_event)
   end
@@ -73,7 +73,7 @@ class TackleEvent < Event
   end
 end
 
-class TouchdownEvent < Event
+class TouchdownEvent < BaseEvent
   def initialize(player:, yards_diff:, next_event:)
     @player = player
     super(yards_diff: yards_diff, next_event: next_event)
