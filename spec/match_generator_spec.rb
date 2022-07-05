@@ -25,5 +25,9 @@ RSpec.describe MatchGenerator do
     it "generates each action as kickoff" do
       expect(match.actions).to all(be_kickoff)
     end
+
+    it "generates match with score 0-180 - each action is a 6 pt TD for away team" do
+      expect(match.score).to eq("0-180")
+    end
   end
 end

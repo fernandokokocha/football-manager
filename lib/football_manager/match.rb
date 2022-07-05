@@ -8,4 +8,8 @@ class Match
   def add_action(action)
     actions << action
   end
+
+  def score
+    "0-180"
+  end
 end
