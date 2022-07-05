@@ -12,4 +12,8 @@ class Match
   def score
     "0-180"
   end
+
+  def time_in_seconds
+    actions.map(&:time_in_seconds).inject(0, &:+)
+  end
 end

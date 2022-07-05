@@ -1,3 +1,4 @@
 module Rules
   KICKOFF_YARDS = 35
+  QUARTER_TIME_IN_SECONDS = 15 * 60
 end

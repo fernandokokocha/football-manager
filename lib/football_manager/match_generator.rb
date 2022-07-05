@@ -8,7 +8,7 @@ class MatchGenerator
 
   def generate(roster_1, roster_2)
     match = Match.new
-    30.times do
+    while (match.time_in_seconds < Rules::QUARTER_TIME_IN_SECONDS)
       action = kickoff_generator.generate(roster_1, roster_2, event_generators)
       match.add_action(action)
     end
