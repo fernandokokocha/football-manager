@@ -10,7 +10,7 @@ RSpec.describe MatchGenerator do
     let(:roster_2) { Roster.new(team: team_2, kicker: nil, returner: returner) }
     let(:generators_params) { {} }
     let(:kickoff_generator) { KickoffGenerator.new() }
-    let(:event_generators) { EventGenerators.new(generators_params) }
+    let(:event_generators) { PhaseGenerators.new(generators_params) }
     let(:match_generator) {
       MatchGenerator.new(kickoff_generator: kickoff_generator,
                          event_generators: event_generators)
@@ -19,7 +19,7 @@ RSpec.describe MatchGenerator do
     subject(:match) { match_generator.generate(roster_1, roster_2) }
 
     describe "when each kickoff ends with return touchdown" do
-      let(:return_event_generator) { ScoringReturnEventGenerator.new }
+      let(:return_event_generator) { ScoringReturnPhaseGenerator.new }
       let(:generators_params) { { return: return_event_generator } }
 
       it "generates 30 actions" do
@@ -36,7 +36,7 @@ RSpec.describe MatchGenerator do
     end
 
     describe "when first kickoff ends with return touchdown and lasts whole quarter" do
-      let(:return_event_generator) { ScoringReturnEventGenerator.new }
+      let(:return_event_generator) { ScoringReturnPhaseGenerator.new }
       let(:generators_params) { { return: return_event_generator } }
       let(:kickoff_generator) { KickoffGenerator.new(time_in_seconds: 15 * 60) }
 
