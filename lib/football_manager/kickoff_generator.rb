@@ -1,4 +1,10 @@
 class KickoffGenerator
+  def initialize(time_in_seconds: nil)
+    @time_in_seconds = time_in_seconds
+  end
+
+  attr_reader :time_in_seconds
+
   def generate(roster_1, roster_2, event_generators)
     starting_yards_num = Rules::KICKOFF_YARDS
 
@@ -20,7 +26,7 @@ class KickoffGenerator
                       starting_yards: YardsInPitch.new(from_left: starting_yards_num),
                       ending_yards: YardsInPitch.new(from_left: ending_yards_num),
                       phases: phases,
-                      time_in_seconds: 30,
+                      time_in_seconds: @time_in_seconds || 30,
                       next_action: next_action)
   end
 end
