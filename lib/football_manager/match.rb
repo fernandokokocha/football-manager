@@ -4,6 +4,7 @@ class Match
   end
 
   attr_reader :actions
+  attr_accessor :ball_possession
 
   def add_action(action)
     actions << action
@@ -19,5 +20,9 @@ class Match
 
   def time_in_seconds
     actions.map(&:time_in_seconds).inject(0, &:+)
+  end
+
+  def next_action
+    actions.last.next_action
   end
 end

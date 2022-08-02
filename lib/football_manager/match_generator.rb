@@ -12,6 +12,7 @@ class MatchGenerator
     while (match.time_in_seconds < Rules::QUARTER_TIME_IN_SECONDS)
       action = kickoff_generator.generate(roster_1, roster_2, event_generators)
       match.add_action(action)
+      match.ball_possession = roster_1
     end
     match
   end
@@ -19,6 +20,7 @@ class MatchGenerator
   def generate_next(roster_1, roster_2)
     action = kickoff_generator.generate(roster_1, roster_2, event_generators)
     match.add_action(action)
+    match.ball_possession = roster_1
     match
   end
 end

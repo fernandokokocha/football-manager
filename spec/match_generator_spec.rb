@@ -16,23 +16,29 @@ RSpec.describe MatchGenerator do
   }
 
   describe "#generate_next" do
+    let(:return_event_generator) { ScoringReturnPhaseGenerator.new }
+    let(:generators_params) { { return: return_event_generator } }
+
     subject(:match) { match_generator.generate_next(roster_1, roster_2) }
 
-    describe "when each kickoff ends with return touchdown" do
-      let(:return_event_generator) { ScoringReturnPhaseGenerator.new }
-      let(:generators_params) { { return: return_event_generator } }
+    it "generates 1 action" do
+      expect(match.actions.length).to be(1)
+    end
 
-      it "generates 1 action" do
-        expect(match.actions.length).to be(1)
-      end
+    it "generates action as kickoff" do
+      expect(match.actions.first).to be_kickoff
+    end
 
-      it "generates action as kickoff" do
-        expect(match.actions.first).to be_kickoff
-      end
+    it "generates match with score 0-6" do
+      expect(match.score).to eq("0-6")
+    end
 
-      it "generates match with score 0-6" do
-        expect(match.score).to eq("0-6")
-      end
+    it "generates match where team 1 has ball possession" do
+      expect(match.ball_possession).to eq(roster_1)
+    end
+
+    it "generates match where next action is kickoff" do
+      expect(match.next_action).to eq(:team_1_kickoff)
     end
   end
 
