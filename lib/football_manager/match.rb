@@ -23,6 +23,6 @@ class Match
   end
 
   def next_action
-    actions.last.next_action
+    :team_1_kickoff
   end
 end

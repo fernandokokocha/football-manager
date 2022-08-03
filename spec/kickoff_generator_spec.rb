@@ -24,8 +24,7 @@ RSpec.describe KickoffGenerator do
                                                 ReturnPhase.new(returner: returner, yards_diff: Yards.new(-30), next_event: :tackle),
                                                 TacklePhase.new(yards_diff: Yards.new(0), next_event: nil),
                                               ],
-                                              time_in_seconds: 30,
-                                              next_action: :team_2_attempt))
+                                              time_in_seconds: 30))
     end
 
     describe "when other generator provided" do
@@ -42,8 +41,7 @@ RSpec.describe KickoffGenerator do
                                                   ReturnPhase.new(returner: returner, yards_diff: Yards.new(-40), next_event: :tackle),
                                                   TacklePhase.new(yards_diff: Yards.new(0), next_event: nil),
                                                 ],
-                                                time_in_seconds: 30,
-                                                next_action: :team_2_attempt))
+                                                time_in_seconds: 30))
       end
     end
 
@@ -62,8 +60,7 @@ RSpec.describe KickoffGenerator do
                                                   ReturnPhase.new(returner: returner, yards_diff: YardsFromRange.new(-50, -30), next_event: :tackle),
                                                   TacklePhase.new(yards_diff: Yards.new(0), next_event: nil),
                                                 ],
-                                                time_in_seconds: 30,
-                                                next_action: :team_2_attempt))
+                                                time_in_seconds: 30))
       end
     end
 
@@ -81,8 +78,7 @@ RSpec.describe KickoffGenerator do
                                                   ReturnPhase.new(returner: returner, yards_diff: Yards.new(-30), next_event: :tackle),
                                                   TacklePhase.new(yards_diff: Yards.new(0), next_event: nil),
                                                 ],
-                                                time_in_seconds: 30,
-                                                next_action: :team_2_attempt))
+                                                time_in_seconds: 30))
       end
     end
 
@@ -100,8 +96,7 @@ RSpec.describe KickoffGenerator do
                                                   ReturnPhase.new(returner: returner, yards_diff: Yards.new(-85), next_event: :touchdown),
                                                   TouchdownPhase.new(player: returner, yards_diff: Yards.new(0), next_event: nil),
                                                 ],
-                                                time_in_seconds: 30,
-                                                next_action: :team_1_kickoff))
+                                                time_in_seconds: 30))
       end
     end
   end
