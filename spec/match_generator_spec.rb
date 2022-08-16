@@ -37,8 +37,8 @@ RSpec.describe MatchGenerator do
       expect(match.ball_possession).to eq(roster_1)
     end
 
-    it "generates match where next action is kickoff" do
-      expect(match.next_action).to eq(:team_1_kickoff)
+    it "generates match where next action is home kickoff" do
+      expect(match.next_action).to eq(:home_kickoff)
     end
   end
 

@@ -23,8 +23,8 @@ class Match
   end
 
   def next_action
-    return :team_1_kickoff if actions.empty?
-    return :team_1_kickoff if actions.last.ends_with_touchdown?
-    :team_2_attempt
+    return :home_kickoff if actions.empty?
+    return :home_kickoff if actions.last.ends_with_touchdown?
+    :away_attempt
   end
 end
