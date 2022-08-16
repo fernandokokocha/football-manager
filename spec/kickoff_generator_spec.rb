@@ -6,8 +6,8 @@ RSpec.describe KickoffGenerator do
     let(:team_2) { Team.new }
     let(:kicker) { Player.new(position: "K", name: "Przemek") }
     let(:returner) { Player.new(position: "KR", name: "Bartek") }
-    let(:roster_1) { Roster.new(team: team_1, kicker: kicker, returner: nil) }
-    let(:roster_2) { Roster.new(team: team_2, kicker: nil, returner: returner) }
+    let(:roster_1) { Roster.new(team: team_1, kicker: kicker) }
+    let(:roster_2) { Roster.new(team: team_2, returner: returner) }
     let(:generators_params) { {} }
     let(:event_generators) { PhaseGenerators.new(generators_params) }
     let(:kickoff_generator) { KickoffGenerator.new }
