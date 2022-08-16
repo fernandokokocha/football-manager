@@ -27,4 +27,10 @@ class Match
     return :home_kickoff if actions.last.ends_with_touchdown?
     :away_attempt
   end
+
+  def next_yards
+    return YardsInPitch.new(from_left: 35) if actions.empty?
+    return YardsInPitch.new(from_left: 35) if actions.last.ends_with_touchdown?
+    actions.last.ending_yards
+  end
 end
