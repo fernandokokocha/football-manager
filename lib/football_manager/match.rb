@@ -1,10 +1,12 @@
 class Match
-  def initialize
+  def initialize(home_roster, away_roster)
+    @home_roster = home_roster
+    @away_roster = away_roster
     @actions = []
   end
 
-  attr_reader :actions
-  attr_accessor :ball_possession
+  attr_reader :actions, :home_roster, :away_roster
+  attr_accessor :ball_possession, :next_action, :next_yards
 
   def add_action(action)
     actions << action
@@ -20,17 +22,5 @@ class Match
 
   def time_in_seconds
     actions.map(&:time_in_seconds).inject(0, &:+)
-  end
-
-  def next_action
-    return :home_kickoff if actions.empty?
-    return :home_kickoff if actions.last.ends_with_touchdown?
-    :away_attempt
-  end
-
-  def next_yards
-    return YardsInPitch.new(from_left: 35) if actions.empty?
-    return YardsInPitch.new(from_left: 35) if actions.last.ends_with_touchdown?
-    actions.last.ending_yards
   end
 end

@@ -5,9 +5,8 @@ class ActionGenerator
 
   attr_reader :time_in_seconds
 
-  def generate(offence_roster, defence_roster, starting_yards, event_generators)
+  def generate(offence_roster, defence_roster, starting_yards, next_phase, event_generators)
     current_yards = starting_yards.from_left
-    next_phase = :snap
 
     phases = []
     while (next_phase != nil)
@@ -23,7 +22,7 @@ class ActionGenerator
       starting_yards: starting_yards,
       ending_yards: YardsInPitch.new(from_left: ending_yards_num),
       phases: phases,
-      time_in_seconds: 30,
+      time_in_seconds: time_in_seconds || 30,
     )
   end
 end

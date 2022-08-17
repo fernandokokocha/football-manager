@@ -13,7 +13,7 @@ RSpec.describe ActionGenerator do
     let(:event_generators) { PhaseGenerators.new(generators_params) }
     let(:action_generator) { ActionGenerator.new }
 
-    subject(:action) { action_generator.generate(roster_1, roster_2, starting_yards, event_generators) }
+    subject(:action) { action_generator.generate(roster_1, roster_2, starting_yards, :snap, event_generators) }
 
     it "generates action with default data" do
       expect(action).to eq(Action.new(starting_team: team_1,
