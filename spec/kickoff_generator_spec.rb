@@ -15,7 +15,7 @@ RSpec.describe KickoffGenerator do
     subject(:kickoff) { kickoff_generator.generate(roster_1, roster_2, event_generators) }
 
     it "generates kickoff off with default data" do
-      expect(kickoff).to eq(KickoffAction.new(kicking_team: team_1,
+      expect(kickoff).to eq(Action.new(starting_team: team_1,
                                               starting_yards: YardsInPitch.new(from_left: 35),
                                               ending_yards: YardsInPitch.new(from_left: 55),
                                               phases: [
@@ -32,7 +32,7 @@ RSpec.describe KickoffGenerator do
       let(:generators_params) { { return: return_event_generator } }
 
       it "generates kickoff off with different data" do
-        expect(kickoff).to eq(KickoffAction.new(kicking_team: team_1,
+        expect(kickoff).to eq(Action.new(starting_team: team_1,
                                                 starting_yards: YardsInPitch.new(from_left: 35),
                                                 ending_yards: YardsInPitch.new(from_left: 45),
                                                 phases: [
@@ -51,7 +51,7 @@ RSpec.describe KickoffGenerator do
 
       it "generates kickoff off with random data" do
         ending_yards_num = 85 + kickoff.phases[2].yards_diff.number
-        expect(kickoff).to eq(KickoffAction.new(kicking_team: team_1,
+        expect(kickoff).to eq(Action.new(starting_team: team_1,
                                                 starting_yards: YardsInPitch.new(from_left: 35),
                                                 ending_yards: YardsInPitch.new(from_left: ending_yards_num),
                                                 phases: [
@@ -69,7 +69,7 @@ RSpec.describe KickoffGenerator do
       let(:generators_params) { { kickoff: kickoff_event_generator } }
 
       it "generates kickoff off with different data " do
-        expect(kickoff).to eq(KickoffAction.new(kicking_team: team_1,
+        expect(kickoff).to eq(Action.new(starting_team: team_1,
                                                 starting_yards: YardsInPitch.new(from_left: 35),
                                                 ending_yards: YardsInPitch.new(from_left: 20),
                                                 phases: [
@@ -87,7 +87,7 @@ RSpec.describe KickoffGenerator do
       let(:generators_params) { { return: return_event_generator } }
 
       it "generates kickoff off with different data " do
-        expect(kickoff).to eq(KickoffAction.new(kicking_team: team_1,
+        expect(kickoff).to eq(Action.new(starting_team: team_1,
                                                 starting_yards: YardsInPitch.new(from_left: 35),
                                                 ending_yards: YardsInPitch.new(from_left: 0),
                                                 phases: [

@@ -19,8 +19,8 @@ class ActionGenerator
     ending_yards_num = current_yards
 
     Action.new(
-      offence_team: offence_roster.team,
-      starting_yards: YardsInPitch.new(from_left: 50),
+      starting_team: offence_roster.team,
+      starting_yards: starting_yards,
       ending_yards: YardsInPitch.new(from_left: ending_yards_num),
       phases: phases,
       time_in_seconds: 30,

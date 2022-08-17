@@ -16,7 +16,7 @@ RSpec.describe ActionGenerator do
     subject(:action) { action_generator.generate(roster_1, roster_2, starting_yards, event_generators) }
 
     it "generates action with default data" do
-      expect(action).to eq(Action.new(offence_team: team_1,
+      expect(action).to eq(Action.new(starting_team: team_1,
                                       starting_yards: YardsInPitch.new(from_left: 50),
                                       ending_yards: YardsInPitch.new(from_left: 60),
                                       phases: [

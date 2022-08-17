@@ -20,7 +20,7 @@ class KickoffGenerator
 
     ending_yards_num = current_yards
 
-    KickoffAction.new(kicking_team: roster_1.team,
+    Action.new(starting_team: roster_1.team,
                       starting_yards: YardsInPitch.new(from_left: starting_yards_num),
                       ending_yards: YardsInPitch.new(from_left: ending_yards_num),
                       phases: phases,

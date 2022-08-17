@@ -16,7 +16,7 @@ RSpec.describe Match do
 
   describe "after non scoring kickoff" do
     let(:kickoff) {
-      KickoffAction.new(kicking_team: team_1,
+      Action.new(starting_team: team_1,
                         starting_yards: YardsInPitch.new(from_left: 35),
                         ending_yards: YardsInPitch.new(from_left: 20),
                         phases: [
@@ -40,7 +40,7 @@ RSpec.describe Match do
 
   describe "after kickoff with scoring return" do
     let(:kickoff) {
-      KickoffAction.new(kicking_team: team_1,
+      Action.new(starting_team: team_1,
                         starting_yards: YardsInPitch.new(from_left: 35),
                         ending_yards: YardsInPitch.new(from_left: 0),
                         phases: [
