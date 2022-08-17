@@ -1,8 +1,8 @@
 class KickoffPhase < BasePhase
-  def initialize(kicker:, yards_from:, yards_diff:, next_event:)
+  def initialize(kicker:, yards_from:, yards_diff:, next_phase:)
     @kicker = kicker
     @yards_from = yards_from
-    super(yards_diff: yards_diff, next_event: next_event)
+    super(yards_diff: yards_diff, next_phase: next_phase)
   end
 
   attr_reader :kicker, :yards_from
@@ -12,6 +12,6 @@ class KickoffPhase < BasePhase
       self.kicker == o.kicker &&
       self.yards_from == o.yards_from &&
       self.yards_diff == o.yards_diff &&
-      self.next_event == o.next_event
+      self.next_phase == o.next_phase
   end
 end

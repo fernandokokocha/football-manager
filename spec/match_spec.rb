@@ -20,7 +20,7 @@ RSpec.describe Match do
                         starting_yards: YardsInPitch.new(from_left: 35),
                         ending_yards: YardsInPitch.new(from_left: 20),
                         phases: [
-                          TacklePhase.new(yards_diff: Yards.new(0), next_event: nil),
+                          TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil),
                         ],
                         time_in_seconds: 30)
     }
@@ -44,7 +44,7 @@ RSpec.describe Match do
                         starting_yards: YardsInPitch.new(from_left: 35),
                         ending_yards: YardsInPitch.new(from_left: 0),
                         phases: [
-                          TouchdownPhase.new(player: returner, yards_diff: Yards.new(0), next_event: nil),
+                          TouchdownPhase.new(player: returner, yards_diff: Yards.new(0), next_phase: nil),
                         ],
                         time_in_seconds: 30)
     }

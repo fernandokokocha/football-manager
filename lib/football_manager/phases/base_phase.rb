@@ -1,10 +1,10 @@
 class BasePhase
-  def initialize(yards_diff:, next_event:)
+  def initialize(yards_diff:, next_phase:)
     @yards_diff = yards_diff
-    @next_event = next_event
+    @next_phase = next_phase
   end
 
-  attr_reader :yards_diff, :next_event
+  attr_reader :yards_diff, :next_phase
 
   def touchdown?
     false

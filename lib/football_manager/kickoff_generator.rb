@@ -9,13 +9,13 @@ class KickoffGenerator
     starting_yards_num = Rules::KICKOFF_YARDS
 
     current_yards = starting_yards_num
-    next_event = :kickoff
+    next_phase = :kickoff
 
     phases = []
-    while (next_event != nil)
-      phases << event_generators.send(next_event).call(roster_1, roster_2, current_yards)
+    while (next_phase != nil)
+      phases << event_generators.send(next_phase).call(roster_1, roster_2, current_yards)
       current_yards += phases.last.yards_diff.number
-      next_event = phases.last.next_event
+      next_phase = phases.last.next_phase
     end
 
     ending_yards_num = current_yards

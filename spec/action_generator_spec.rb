@@ -20,9 +20,9 @@ RSpec.describe ActionGenerator do
                                       starting_yards: YardsInPitch.new(from_left: 50),
                                       ending_yards: YardsInPitch.new(from_left: 60),
                                       phases: [
-                                        SnapPhase.new(snaper: center, yards_diff: Yards.new(-10), next_event: :run),
-                                        RunPhase.new(runner: qb, yards_diff: Yards.new(20), next_event: :tackle),
-                                        TacklePhase.new(yards_diff: Yards.new(0), next_event: nil),
+                                        SnapPhase.new(snaper: center, yards_diff: Yards.new(-10), next_phase: :run),
+                                        RunPhase.new(runner: qb, yards_diff: Yards.new(20), next_phase: :tackle),
+                                        TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil),
                                       ],
                                       time_in_seconds: 30))
     end

@@ -1,7 +1,7 @@
 class RunPhase < BasePhase
-  def initialize(runner:, yards_diff:, next_event:)
+  def initialize(runner:, yards_diff:, next_phase:)
     @runner = runner
-    super(yards_diff: yards_diff, next_event: next_event)
+    super(yards_diff: yards_diff, next_phase: next_phase)
   end
 
   attr_reader :runner
@@ -10,6 +10,6 @@ class RunPhase < BasePhase
     self.class == o.class &&
       self.runner == o.runner &&
       self.yards_diff == o.yards_diff &&
-      self.next_event == o.next_event
+      self.next_phase == o.next_phase
   end
 end

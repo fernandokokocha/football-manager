@@ -7,13 +7,13 @@ class ActionGenerator
 
   def generate(offence_roster, defence_roster, starting_yards, event_generators)
     current_yards = starting_yards.from_left
-    next_event = :snap
+    next_phase = :snap
 
     phases = []
-    while (next_event != nil)
-      phases << event_generators.send(next_event).call(offence_roster, defence_roster, current_yards)
+    while (next_phase != nil)
+      phases << event_generators.send(next_phase).call(offence_roster, defence_roster, current_yards)
       current_yards += phases.last.yards_diff.number
-      next_event = phases.last.next_event
+      next_phase = phases.last.next_phase
     end
 
     ending_yards_num = current_yards
