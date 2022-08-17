@@ -3,16 +3,15 @@ require "football_manager"
 RSpec.describe MatchGenerator do
   let(:team_1) { Team.new }
   let(:team_2) { Team.new }
-  let(:kicker) { Player.new(position: "K", name: "Przemek") }
-  let(:returner) { Player.new(position: "KR", name: "Bartek") }
-  let(:roster_1) { Roster.new(team: team_1, kicker: kicker, returner: nil) }
-  let(:roster_2) { Roster.new(team: team_2, kicker: nil, returner: returner) }
+  let(:kicker) { Player.new(position: "K", name: "Krzysiek") }
+  let(:returner) { Player.new(position: "KR", name: "Robert") }
+  let(:roster_1) { Roster.new(team: team_1, kicker: kicker) }
+  let(:roster_2) { Roster.new(team: team_2, returner: returner) }
   let(:generators_params) { {} }
-  let(:action_generator) { ActionGenerator.new() }
-  let(:event_generators) { PhaseGenerators.new(generators_params) }
+  let(:action_generator) { ActionGenerator.new(phase_generators) }
+  let(:phase_generators) { PhaseGenerators.new(generators_params) }
   let(:match_generator) {
     MatchGenerator.new(action_generator: action_generator,
-                       event_generators: event_generators,
                        offence: roster_1,
                        defence: roster_2)
   }
@@ -87,7 +86,7 @@ RSpec.describe MatchGenerator do
     describe "when first kickoff ends with return touchdown and lasts whole quarter" do
       let(:return_event_generator) { ScoringReturnPhaseGenerator.new }
       let(:generators_params) { { return: return_event_generator } }
-      let(:action_generator) { ActionGenerator.new(time_in_seconds: 15 * 60) }
+      let(:action_generator) { WholeGameActionGenerator.new(phase_generators) }
 
       it "generates 1 action" do
         expect(match.actions.length).to be(1)
