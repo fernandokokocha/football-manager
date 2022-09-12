@@ -17,7 +17,11 @@ class Action
   end
 
   def kickoff?
-    true
+    phases.first.kickoff?
+  end
+
+  def action?
+    not kickoff?
   end
 
   def ends_with_touchdown?

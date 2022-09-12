@@ -7,6 +7,10 @@ class KickoffPhase < BasePhase
 
   attr_reader :kicker, :yards_from
 
+  def kickoff?
+    true
+  end
+
   def ==(o)
     self.class == o.class &&
       self.kicker == o.kicker &&

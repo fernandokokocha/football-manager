@@ -10,4 +10,8 @@ class BasePhase
   def touchdown?
     false
   end
+
+  def kickoff?
+    false
+  end
 end

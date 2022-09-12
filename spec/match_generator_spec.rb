@@ -63,6 +63,36 @@ RSpec.describe MatchGenerator do
     end
   end
 
+  describe "one default action is already generated" do
+    before(:each) { match_generator.generate_next }
+
+    subject(:match) { match_generator.generate_next }
+
+    it "generates 2 actions" do
+      expect(match.actions.length).to be(2)
+    end
+
+    it "generates action as action" do
+      expect(match.actions[1]).to be_action
+    end
+
+    it "generates match with score 0-0" do
+      expect(match.score).to eq("0-0")
+    end
+
+    it "generates match where team 1 has ball possession" do
+      expect(match.ball_possession).to eq(roster_1)
+    end
+
+    it "generates match where next action is kickoff" do
+      expect(match.next_action).to eq(:snap)
+    end
+
+    it "generates next yardage" do
+      expect(match.next_yards).to eq(YardsInPitch.new(from_left: 45))
+    end
+  end
+
   describe "#generate" do
     subject(:match) { match_generator.generate }
 
