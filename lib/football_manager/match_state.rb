@@ -19,19 +19,29 @@ class MatchState
   end
 
   def away_touchdown
-    @team = :home
-    @attemppt = 0
-    @ball_yards = YardsInPitch.new(from_left: 35)
-  end
-
-  def home_touchdown
     @team = :away
-    @attemppt = 0
+    @type = :kickoff
+    @attempt = 0
     @ball_yards = YardsInPitch.new(from_right: 35)
   end
 
+  def home_touchdown
+    @team = :home
+    @type = :kickoff
+    @attempt = 0
+    @ball_yards = YardsInPitch.new(from_left: 35)
+  end
+
   def away_possesion_and_tackled(yards)
-    @attempt += 1
+    if @team == :home
+      @attempt = 1
+    else
+      if @first_down_marker && @first_down_marker.crossed_minus?(yards)
+        @attempt = 1
+      else
+        @attempt += 1
+      end
+    end
 
     if (@attempt > 4)
       @attempt = 1
@@ -45,12 +55,20 @@ class MatchState
     end
 
     if @attempt == 1
-      @first_down_marker = ball_yards.from_left - 10
+      @first_down_marker = YardsInPitch.from_first_down_minus(ball_yards)
     end
   end
 
   def home_possesion_and_tackled(yards)
-    @attempt += 1
+    if team == :away
+      @attempt = 1
+    else
+      if @first_down_marker && @first_down_marker.crossed_plus?(yards)
+        @attempt = 1
+      else
+        @attempt += 1
+      end
+    end
 
     if (@attempt > 4)
       @attempt = 1
@@ -64,7 +82,7 @@ class MatchState
     end
 
     if @attempt == 1
-      @first_down_marker = ball_yards.from_left + 10
+      @first_down_marker = YardsInPitch.from_first_down_plus(ball_yards)
     end
   end
 end

@@ -4,7 +4,23 @@ class YardsInPitch
     @from_right = from_right ? from_right : 100 - from_left
   end
 
+  def self.from_first_down_plus(yards)
+    self.new(from_left: yards.from_left + 10)
+  end
+
+  def self.from_first_down_minus(yards)
+    self.new(from_left: yards.from_left - 10)
+  end
+
   attr_reader :from_left, :from_right
+
+  def crossed_minus?(yards)
+    yards.from_left < self.from_left
+  end
+
+  def crossed_plus?(yards)
+    yards.from_left > self.from_left
+  end
 
   def ==(o)
     self.class == o.class &&
