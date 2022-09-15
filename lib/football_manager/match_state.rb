@@ -36,7 +36,7 @@ class MatchState
     if @team == :home
       @attempt = 1
     else
-      if @first_down_marker && @first_down_marker.crossed_minus?(yards)
+      if @first_down_marker && @first_down_marker.crossed?(yards)
         @attempt = 1
       else
         @attempt += 1
@@ -55,7 +55,7 @@ class MatchState
     end
 
     if @attempt == 1
-      @first_down_marker = YardsInPitch.from_first_down_minus(ball_yards)
+      @first_down_marker = MarkerCountdown.new(first_down_yards: ball_yards)
     end
   end
 
@@ -63,7 +63,7 @@ class MatchState
     if team == :away
       @attempt = 1
     else
-      if @first_down_marker && @first_down_marker.crossed_plus?(yards)
+      if @first_down_marker && @first_down_marker.crossed?(yards)
         @attempt = 1
       else
         @attempt += 1
@@ -82,7 +82,7 @@ class MatchState
     end
 
     if @attempt == 1
-      @first_down_marker = YardsInPitch.from_first_down_plus(ball_yards)
+      @first_down_marker = MarkerCountup.new(first_down_yards: ball_yards)
     end
   end
 end
