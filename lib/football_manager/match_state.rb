@@ -40,6 +40,16 @@ class MatchState
     tackle(:home, :away, MarkerCountup, yards)
   end
 
+  def debug
+    puts "==="
+    puts "team #{team}"
+    puts "type #{type}"
+    puts "attempt #{attempt}"
+    puts "ball_yards #{ball_yards}"
+    puts "first_down_marker #{first_down_marker}"
+    puts "==="
+  end
+
   private
 
   def tackle(my_team, other_team, marker_class, yards)

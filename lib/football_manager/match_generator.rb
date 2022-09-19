@@ -1,48 +1,33 @@
 class MatchGenerator
-  def initialize(action_generator:, offence:, defence:)
+  def initialize(action_generator:, home_roster:, away_roster:)
     @action_generator = action_generator
-    @offence = offence
-    @defence = defence
-
-    @match = Match.new(offence, defence)
-    @match.ball_possession = offence
-    @match.next_action = :kickoff
-    @match.next_yards = YardsInPitch.new(from_left: 35)
+    @home_roster = home_roster
+    @away_roster = away_roster
+    @match_state = MatchState.new
+    @match = Match.new(home_roster, away_roster)
   end
 
-  attr_reader :action_generator, :match, :offence, :defence
-
-  def generate
-    starting_yards = YardsInPitch.new(from_left: Rules::KICKOFF_YARDS)
-    next_action = :kickoff
-
-    while (match.time_in_seconds < Rules::QUARTER_TIME_IN_SECONDS)
-      action = action_generator.generate(offence, defence, starting_yards, next_action)
-      match.add_action(action)
-
-      flip = action.ends_with_touchdown?
-
-      match.next_action = flip ? :kickoff : :snap
-
-      match.ball_possession = flip ? defence : offence
-      match.next_yards = action.ending_yards
-    end
-    match
-  end
+  attr_reader :action_generator, :home_roster, :away_roster, :match, :match_state
 
   def generate_next
-    next_action = match.next_action
-    action = action_generator.generate(offence, defence, YardsInPitch.new(from_left: Rules::KICKOFF_YARDS), next_action)
-    match.add_action(action)
-    match.ball_possession = offence
+    offence_roster = match_state.team == :home ? home_roster : away_roster
+    defence_roster = match_state.team == :home ? away_roster : home_roster
+    starting_yards = match_state.ball_yards
+    next_phase = match_state.type == :kickoff ? :kickoff : :snap
 
-    ends_with_td = action.ends_with_touchdown?
+    action = action_generator.generate(offence_roster, defence_roster, starting_yards, next_phase)
 
-    match.next_action = ends_with_td ? :kickoff : :snap
+    # I don't trust this part
+    if action.ends_with_touchdown_of?(home_roster)
+      @match_state.home_touchdown
+    elsif action.ends_with_touchdown_of?(away_roster)
+      @match_state.away_touchdown
+    elsif action.ends_with_tackle_while_possesion_of?(home_roster)
+      @match_state.home_possesion_and_tackled(action.ending_yards)
+    elsif action.ends_with_tackle_while_possesion_of?(away_roster)
+      @match_state.away_possesion_and_tackled(action.ending_yards)
+    end
 
-    match.ball_possession = offence
-    match.next_yards = ends_with_td ? YardsInPitch.new(from_left: Rules::KICKOFF_YARDS) : action.ending_yards
-
-    match
+    @match.add_action(action)
   end
 end

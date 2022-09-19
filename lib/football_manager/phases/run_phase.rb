@@ -6,6 +6,10 @@ class RunPhase < BasePhase
 
   attr_reader :runner
 
+  def who_has_ball
+    runner
+  end
+
   def ==(o)
     self.class == o.class &&
       self.runner == o.runner &&

@@ -31,4 +31,12 @@ class Action
   def time_in_seconds
     phases.map(&:time_in_seconds).inject(0, &:+)
   end
+
+  def ends_with_touchdown_of?(roster)
+    ends_with_touchdown? && roster.inlcudes?(phases.last.player)
+  end
+
+  def ends_with_tackle_while_possesion_of?(roster)
+    (not ends_with_touchdown?) && roster.includes?(phases[-2].who_has_ball)
+  end
 end

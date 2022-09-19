@@ -6,7 +6,6 @@ class Match
   end
 
   attr_reader :actions, :home_roster, :away_roster
-  attr_accessor :ball_possession, :next_action, :next_yards
 
   def add_action(action)
     actions << action

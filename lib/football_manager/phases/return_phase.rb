@@ -6,6 +6,10 @@ class ReturnPhase < BasePhase
 
   attr_reader :returner
 
+  def who_has_ball
+    returner
+  end
+
   def ==(o)
     self.class == o.class &&
       self.returner == o.returner &&
