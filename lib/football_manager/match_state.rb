@@ -33,34 +33,17 @@ class MatchState
   end
 
   def away_possesion_and_tackled(yards)
-    if @team == :home
-      @attempt = 1
-    else
-      if @first_down_marker && @first_down_marker.crossed?(yards)
-        @attempt = 1
-      else
-        @attempt += 1
-      end
-    end
-
-    if (@attempt > 4)
-      @attempt = 1
-      @team = :home
-      @type = :attempt
-      @ball_yards = yards
-    else
-      @team = :away
-      @type = :attempt
-      @ball_yards = yards
-    end
-
-    if @attempt == 1
-      @first_down_marker = MarkerCountdown.new(first_down_yards: ball_yards)
-    end
+    tackle(:away, :home, MarkerCountdown, yards)
   end
 
   def home_possesion_and_tackled(yards)
-    if team == :away
+    tackle(:home, :away, MarkerCountup, yards)
+  end
+
+  private
+
+  def tackle(my_team, other_team, marker_class, yards)
+    if team == other_team
       @attempt = 1
     else
       if @first_down_marker && @first_down_marker.crossed?(yards)
@@ -72,17 +55,17 @@ class MatchState
 
     if (@attempt > 4)
       @attempt = 1
-      @team = :away
+      @team = other_team
       @type = :attempt
       @ball_yards = yards
     else
-      @team = :home
+      @team = my_team
       @type = :attempt
       @ball_yards = yards
     end
 
     if @attempt == 1
-      @first_down_marker = MarkerCountup.new(first_down_yards: ball_yards)
+      @first_down_marker = marker_class.new(first_down_yards: ball_yards)
     end
   end
 end
