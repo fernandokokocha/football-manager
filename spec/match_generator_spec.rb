@@ -93,4 +93,12 @@ RSpec.describe MatchGenerator do
       end
     end
   end
+
+  describe "#generate_whole" do
+    before(:each) { match_generator.generate_whole }
+
+    it "generates 59 actions" do
+      expect(match_generator.match.actions.length).to eq(59)
+    end
+  end
 end

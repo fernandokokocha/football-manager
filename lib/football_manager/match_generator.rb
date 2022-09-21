@@ -30,4 +30,10 @@ class MatchGenerator
 
     @match.add_action(action)
   end
+
+  def generate_whole
+    while (match.time_in_seconds < Rules::QUARTER_TIME_IN_SECONDS)
+      generate_next
+    end
+  end
 end
