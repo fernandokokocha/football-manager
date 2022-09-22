@@ -9,8 +9,10 @@ class ActionGenerator
     current_yards = starting_yards.from_left
 
     phases = []
+
+    progress = ProgressCountup.new
     while (next_phase != nil)
-      phases << phase_generators.send(next_phase).call(offence_roster, defence_roster, current_yards)
+      phases << phase_generators.send(next_phase).call(offence_roster, defence_roster, current_yards, progress)
       current_yards += phases.last.yards_diff.number
       next_phase = phases.last.next_phase
     end
