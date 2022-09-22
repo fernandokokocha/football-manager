@@ -28,8 +28,8 @@ RSpec.describe ActionGenerator do
     end
 
     describe "when other generator provided" do
-      let(:return_event_generator) { ConstantReturnPhaseGenerator.new(yards_returned: 40) }
-      let(:generators_params) { { return: return_event_generator } }
+      let(:return_phase_generator) { ConstantReturnPhaseGenerator.new(yards_returned: 40) }
+      let(:generators_params) { { return: return_phase_generator } }
 
       it "generates kickoff off with different data" do
         expect(kickoff).to eq(Action.new(starting_team: team_1,
@@ -45,8 +45,8 @@ RSpec.describe ActionGenerator do
     end
 
     describe "when random generator provided" do
-      let(:return_event_generator) { RandomReturnPhaseGenerator.new }
-      let(:generators_params) { { return: return_event_generator } }
+      let(:return_phase_generator) { RandomReturnPhaseGenerator.new }
+      let(:generators_params) { { return: return_phase_generator } }
 
       it "generates kickoff off with random data" do
         ending_yards_num = 85 + kickoff.phases[2].yards_diff.number
@@ -62,9 +62,9 @@ RSpec.describe ActionGenerator do
       end
     end
 
-    describe "when kickoff event generator provided" do
-      let(:kickoff_event_generator) { ConstantKickoffPhaseGenerator.new(yards_travelled: 15) }
-      let(:generators_params) { { kickoff: kickoff_event_generator } }
+    describe "when kickoff phase generator provided" do
+      let(:kickoff_phase_generator) { ConstantKickoffPhaseGenerator.new(yards_travelled: 15) }
+      let(:generators_params) { { kickoff: kickoff_phase_generator } }
 
       it "generates kickoff off with different data " do
         expect(kickoff).to eq(Action.new(starting_team: team_1,
@@ -79,9 +79,9 @@ RSpec.describe ActionGenerator do
       end
     end
 
-    describe "when scoring return event generator provided" do
-      let(:return_event_generator) { ScoringReturnPhaseGenerator.new }
-      let(:generators_params) { { return: return_event_generator } }
+    describe "when scoring return phase generator provided" do
+      let(:return_phase_generator) { ScoringReturnPhaseGenerator.new }
+      let(:generators_params) { { return: return_phase_generator } }
 
       it "generates kickoff off with different data " do
         expect(kickoff).to eq(Action.new(starting_team: team_1,
