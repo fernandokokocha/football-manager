@@ -58,7 +58,7 @@ RSpec.describe MatchGenerator do
                        ending_yards: YardsInPitch.new(from_left: 65),
                        phases: [
                          SnapPhase.new(snaper: center, yards_diff: Yards.new(-10), next_phase: :run, time_in_seconds: 0),
-                         RunPhase.new(runner: qb, yards_diff: Yards.new(20), next_phase: :tackle, time_in_seconds: 15),
+                         RunPhase.new(runner: qb, yards_diff: Yards.new(20), next_phase: :tackle, time_in_seconds: 30),
                          TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil, time_in_seconds: 0),
                        ])
           )
@@ -85,7 +85,7 @@ RSpec.describe MatchGenerator do
                        ending_yards: YardsInPitch.new(from_left: 75),
                        phases: [
                          SnapPhase.new(snaper: center, yards_diff: Yards.new(-10), next_phase: :run, time_in_seconds: 0),
-                         RunPhase.new(runner: qb, yards_diff: Yards.new(20), next_phase: :tackle, time_in_seconds: 15),
+                         RunPhase.new(runner: qb, yards_diff: Yards.new(20), next_phase: :tackle, time_in_seconds: 30),
                          TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil, time_in_seconds: 0),
                        ])
           )
@@ -97,8 +97,8 @@ RSpec.describe MatchGenerator do
   describe "#generate_whole" do
     before(:each) { match_generator.generate_whole }
 
-    it "generates 59 actions" do
-      expect(match_generator.match.actions.length).to eq(59)
+    it "generates 30 actions (each default action take 30 seconds)" do
+      expect(match_generator.match.actions.length).to eq(30)
     end
   end
 end
