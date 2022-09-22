@@ -4,10 +4,11 @@ class MatchState
     @type = :kickoff
     @attempt = 0
     @ball_yards = YardsInPitch.new(from_left: 35)
-    @first_down_marker = nil
+    @first_down_marker = MarkerKickoff.new
+    @progress = ProgressCountup.new
   end
 
-  attr_reader :team, :type, :attempt, :ball_yards, :first_down_marker
+  attr_reader :team, :type, :attempt, :ball_yards, :first_down_marker, :progress
 
   def next_action_setup
     ActionSetup.new(

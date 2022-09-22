@@ -12,8 +12,9 @@ RSpec.describe ActionGenerator do
     let(:starting_yards) { YardsInPitch.new(from_left: 35) }
     let(:phase_generators) { PhaseGenerators.new(generators_params) }
     let(:action_generator) { ActionGenerator.new(phase_generators) }
+    let(:progress) { ProgressCountup.new }
 
-    subject(:kickoff) { action_generator.generate(roster_1, roster_2, starting_yards, :kickoff) }
+    subject(:kickoff) { action_generator.generate(roster_1, roster_2, starting_yards, :kickoff, progress) }
 
     it "generates kickoff off with default data" do
       expect(kickoff).to eq(Action.new(starting_team: team_1,

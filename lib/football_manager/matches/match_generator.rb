@@ -14,8 +14,9 @@ class MatchGenerator
     defence_roster = match_state.team == :home ? away_roster : home_roster
     starting_yards = match_state.ball_yards
     next_phase = match_state.type == :kickoff ? :kickoff : :snap
+    starting_progress = match_state.first_down_marker.starting_progress
 
-    action = action_generator.generate(offence_roster, defence_roster, starting_yards, next_phase)
+    action = action_generator.generate(offence_roster, defence_roster, starting_yards, next_phase, starting_progress)
 
     # I don't trust this part
     if action.ends_with_touchdown_of?(home_roster)

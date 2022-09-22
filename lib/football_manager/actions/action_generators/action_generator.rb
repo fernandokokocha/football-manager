@@ -5,12 +5,12 @@ class ActionGenerator
 
   attr_reader :phase_generators
 
-  def generate(offence_roster, defence_roster, starting_yards, next_phase)
+  def generate(offence_roster, defence_roster, starting_yards, next_phase, starting_progress)
     current_yards = starting_yards.from_left
 
     phases = []
 
-    progress = ProgressCountup.new
+    progress = starting_progress
 
     while (next_phase != nil)
       phase = phase_generators.send(next_phase).call(offence_roster, defence_roster, current_yards, progress)

@@ -9,4 +9,8 @@ class MarkerCountdown
   def crossed?(yards)
     yards.from_left < target
   end
+
+  def starting_progress
+    ProgressCountdown.new
+  end
 end
