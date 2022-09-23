@@ -97,8 +97,24 @@ RSpec.describe MatchGenerator do
   describe "#generate_whole" do
     before(:each) { match_generator.generate_whole }
 
-    it "generates 30 actions (each default action take 30 seconds)" do
-      expect(match_generator.match.actions.length).to eq(30)
+    describe "default generators" do
+      it "generates 30 actions (each default action take 30 seconds)" do
+        expect(match_generator.match.actions.length).to eq(30)
+      end
+
+      it "generates 1 kickoff" do
+        kickoffs = match_generator.match.actions.filter { |a| a.kickoff? }
+        expect(kickoffs.length).to eq(1)
+      end
+
+      it "generates 29 non kickoff actions" do
+        actions = match_generator.match.actions.filter { |a| a.action? }
+        expect(actions.length).to eq(29)
+      end
+
+      it "generates 0-0 match" do
+        expect(match_generator.match.score).to eq("0-0")
+      end
     end
   end
 end
