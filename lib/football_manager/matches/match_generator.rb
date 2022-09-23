@@ -10,11 +10,12 @@ class MatchGenerator
   attr_reader :action_generator, :home_roster, :away_roster, :match, :match_state
 
   def generate_next
-    offence_roster = match_state.team == :home ? home_roster : away_roster
-    defence_roster = match_state.team == :home ? away_roster : home_roster
-    starting_yards = match_state.ball_yards
-    next_phase = match_state.type == :kickoff ? :kickoff : :snap
-    starting_progress = match_state.first_down_marker.starting_progress
+    next_action_setup = match_state.next_action_setup
+    offence_roster = next_action_setup.team == :home ? home_roster : away_roster
+    defence_roster = next_action_setup.team == :home ? away_roster : home_roster
+    starting_yards = next_action_setup.ball_yards
+    next_phase = next_action_setup.type == :kickoff ? :kickoff : :snap
+    starting_progress = next_action_setup.progress
 
     action = action_generator.generate(offence_roster, defence_roster, starting_yards, next_phase, starting_progress)
 
