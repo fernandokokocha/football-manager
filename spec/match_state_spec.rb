@@ -10,6 +10,7 @@ RSpec.describe MatchState do
       team: :home,
       type: :kickoff,
       ball_yards: YardsInPitch.new(from_left: 35),
+      progress: ProgressCountup.new,
     ))
   end
 
@@ -23,6 +24,7 @@ RSpec.describe MatchState do
         team: :away,
         type: :kickoff,
         ball_yards: YardsInPitch.new(from_right: 35),
+        progress: ProgressCountdown.new,
       ))
     end
   end
@@ -37,6 +39,7 @@ RSpec.describe MatchState do
         team: :home,
         type: :kickoff,
         ball_yards: YardsInPitch.new(from_left: 35),
+        progress: ProgressCountup.new,
       ))
     end
   end
@@ -53,6 +56,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 40),
+          progress: ProgressCountdown.new,
         ))
       end
     end
@@ -69,6 +73,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 2,
           ball_yards: YardsInPitch.new(from_left: 39),
+          progress: ProgressCountdown.new,
         ))
       end
     end
@@ -86,6 +91,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 3,
           ball_yards: YardsInPitch.new(from_left: 38),
+          progress: ProgressCountdown.new,
         ))
       end
     end
@@ -104,6 +110,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 4,
           ball_yards: YardsInPitch.new(from_left: 37),
+          progress: ProgressCountdown.new,
         ))
       end
     end
@@ -123,6 +130,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 36),
+          progress: ProgressCountup.new,
         ))
       end
     end
@@ -132,12 +140,13 @@ RSpec.describe MatchState do
         match_state.away_possesion_and_tackled(YardsInPitch.new(from_left: 25))
       end
 
-      it "is is turnover and first down to away" do
+      it "is first down to away" do
         expect(next_action_setup).to eq(ActionSetup.new(
           team: :away,
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 25),
+          progress: ProgressCountdown.new,
         ))
       end
     end
@@ -155,6 +164,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 2,
           ball_yards: YardsInPitch.new(from_left: 20),
+          progress: ProgressCountdown.new,
         ))
       end
     end
@@ -172,6 +182,7 @@ RSpec.describe MatchState do
           type: :kickoff,
           attempt: 0,
           ball_yards: YardsInPitch.new(from_right: 35),
+          progress: ProgressCountdown.new,
         ))
       end
     end
@@ -183,12 +194,13 @@ RSpec.describe MatchState do
         match_state.home_possesion_and_tackled(YardsInPitch.new(from_left: 40))
       end
 
-      it "is is away kickoff" do
+      it "is is home first down" do
         expect(next_action_setup).to eq(ActionSetup.new(
           team: :home,
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 40),
+          progress: ProgressCountup.new,
         ))
       end
     end
@@ -200,12 +212,13 @@ RSpec.describe MatchState do
         match_state.home_possesion_and_tackled(YardsInPitch.new(from_left: 20))
       end
 
-      it "is is away kickoff" do
+      it "is is home first down" do
         expect(next_action_setup).to eq(ActionSetup.new(
           team: :home,
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 20),
+          progress: ProgressCountup.new,
         ))
       end
     end
@@ -223,6 +236,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 40),
+          progress: ProgressCountup.new,
         ))
       end
     end
@@ -239,6 +253,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 2,
           ball_yards: YardsInPitch.new(from_left: 41),
+          progress: ProgressCountup.new,
         ))
       end
     end
@@ -256,6 +271,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 3,
           ball_yards: YardsInPitch.new(from_left: 42),
+          progress: ProgressCountup.new,
         ))
       end
     end
@@ -274,6 +290,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 4,
           ball_yards: YardsInPitch.new(from_left: 43),
+          progress: ProgressCountup.new,
         ))
       end
     end
@@ -293,6 +310,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 44),
+          progress: ProgressCountdown.new,
         ))
       end
     end
@@ -303,12 +321,13 @@ RSpec.describe MatchState do
         match_state.home_possesion_and_tackled(YardsInPitch.new(from_left: 55))
       end
 
-      it "is is turnover and first down to home" do
+      it "is is first down to home" do
         expect(next_action_setup).to eq(ActionSetup.new(
           team: :home,
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 55),
+          progress: ProgressCountup.new,
         ))
       end
     end
@@ -326,11 +345,12 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 2,
           ball_yards: YardsInPitch.new(from_left: 60),
+          progress: ProgressCountup.new,
         ))
       end
     end
 
-    describe "when two tackles, then away touchdown" do
+    describe "when two tackles, then home touchdown" do
       before(:each) do
         match_state.home_possesion_and_tackled(YardsInPitch.new(from_left: 40))
         match_state.home_possesion_and_tackled(YardsInPitch.new(from_left: 55))
@@ -343,10 +363,10 @@ RSpec.describe MatchState do
           type: :kickoff,
           attempt: 0,
           ball_yards: YardsInPitch.new(from_left: 35),
+          progress: ProgressCountup.new,
         ))
       end
     end
-
 
     describe "when tackle, then marker not crossed but turn over" do
       before(:each) do
@@ -355,12 +375,13 @@ RSpec.describe MatchState do
         match_state.away_possesion_and_tackled(YardsInPitch.new(from_left: 40))
       end
 
-      it "is is away kickoff" do
+      it "is is away attempt" do
         expect(next_action_setup).to eq(ActionSetup.new(
           team: :away,
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 40),
+          progress: ProgressCountdown.new,
         ))
       end
     end
@@ -372,12 +393,13 @@ RSpec.describe MatchState do
         match_state.away_possesion_and_tackled(YardsInPitch.new(from_left: 60))
       end
 
-      it "is is away kickoff" do
+      it "is is away attempt" do
         expect(next_action_setup).to eq(ActionSetup.new(
           team: :away,
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 60),
+          progress: ProgressCountdown.new,
         ))
       end
     end

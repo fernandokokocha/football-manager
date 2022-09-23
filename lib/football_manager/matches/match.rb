@@ -22,4 +22,8 @@ class Match
   def time_in_seconds
     actions.map(&:time_in_seconds).inject(0, &:+)
   end
+
+  def debug
+    actions.each { |a| a.debug }
+  end
 end

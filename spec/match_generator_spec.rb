@@ -55,10 +55,10 @@ RSpec.describe MatchGenerator do
           expect(match_generator.match.actions[1]).to eq(
             Action.new(starting_team: team_2,
                        starting_yards: YardsInPitch.new(from_left: 55),
-                       ending_yards: YardsInPitch.new(from_left: 45),
+                       ending_yards: YardsInPitch.new(from_left: 54),
                        phases: [
                          SnapPhase.new(snaper: center, yards_diff: Yards.new(10), next_phase: :run, time_in_seconds: 0),
-                         RunPhase.new(runner: qb, yards_diff: Yards.new(-20), next_phase: :tackle, time_in_seconds: 30),
+                         RunPhase.new(runner: qb, yards_diff: Yards.new(-11), next_phase: :tackle, time_in_seconds: 30),
                          TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil, time_in_seconds: 0),
                        ])
           )
@@ -81,11 +81,11 @@ RSpec.describe MatchGenerator do
         it "generates default run" do
           expect(match_generator.match.actions[2]).to eq(
             Action.new(starting_team: team_2,
-                       starting_yards: YardsInPitch.new(from_left: 45),
-                       ending_yards: YardsInPitch.new(from_left: 35),
+                       starting_yards: YardsInPitch.new(from_left: 54),
+                       ending_yards: YardsInPitch.new(from_left: 53),
                        phases: [
                          SnapPhase.new(snaper: center, yards_diff: Yards.new(10), next_phase: :run, time_in_seconds: 0),
-                         RunPhase.new(runner: qb, yards_diff: Yards.new(-20), next_phase: :tackle, time_in_seconds: 30),
+                         RunPhase.new(runner: qb, yards_diff: Yards.new(-11), next_phase: :tackle, time_in_seconds: 30),
                          TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil, time_in_seconds: 0),
                        ])
           )

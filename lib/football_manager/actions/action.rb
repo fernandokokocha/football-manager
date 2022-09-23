@@ -39,4 +39,8 @@ class Action
   def ends_with_tackle_while_possesion_of?(roster)
     (not ends_with_touchdown?) && roster.includes?(phases[-2].who_has_ball)
   end
+
+  def debug
+    puts "Team id: #{starting_team.object_id}, starting yards: #{starting_yards.from_left}, ending yards: #{ending_yards.from_left}"
+  end
 end

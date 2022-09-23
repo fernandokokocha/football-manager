@@ -10,4 +10,8 @@ class ProgressCountup
   def flip
     ProgressCountdown.new
   end
+
+  def ==(o)
+    self.class == o.class
+  end
 end
