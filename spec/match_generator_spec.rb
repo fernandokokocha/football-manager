@@ -116,5 +116,57 @@ RSpec.describe MatchGenerator do
         expect(match_generator.match.score).to eq("0-0")
       end
     end
+
+    describe "when each return ends with touchdown" do
+      let(:return_phase_generator) { ScoringReturnPhaseGenerator.new }
+      let(:generators_params) { { return: return_phase_generator } }
+
+      it "generates 30 actions (each default action take 30 seconds)" do
+        expect(match_generator.match.actions.length).to eq(30)
+      end
+
+      it "generates 30 kickoffs" do
+        kickoffs = match_generator.match.actions.filter { |a| a.kickoff? }
+        expect(kickoffs.length).to eq(30)
+      end
+
+      it "generates 0-180 match" do
+        expect(match_generator.match.score).to eq("0-180")
+      end
+    end
+  end
+
+  describe "mixed examples" do
+    describe "when four first kickoffs end with touchdown and the rest is default generators" do
+      let(:return_phase_generator) { ScoringReturnPhaseGenerator.new }
+      let(:generators_params) { { return: return_phase_generator } }
+
+      before(:each) do
+        match_generator.generate_next
+        match_generator.generate_next
+        match_generator.generate_next
+        match_generator.generate_next
+        phase_generators.update_generator_params({})
+        match_generator.generate_whole
+      end
+
+      it "generates 30 actions (each default action take 30 seconds)" do
+        expect(match_generator.match.actions.length).to eq(30)
+      end
+
+      it "generates 5 kickoffs (one initial + 4 after TD)" do
+        kickoffs = match_generator.match.actions.filter { |a| a.kickoff? }
+        expect(kickoffs.length).to eq(5)
+      end
+
+      it "generates 25 non kickoff actions" do
+        actions = match_generator.match.actions.filter { |a| a.action? }
+        expect(actions.length).to eq(25)
+      end
+
+      it "generates 0-24 match" do
+        expect(match_generator.match.score).to eq("0-24")
+      end
+    end
   end
 end

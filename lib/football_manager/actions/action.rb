@@ -33,7 +33,7 @@ class Action
   end
 
   def ends_with_touchdown_of?(roster)
-    ends_with_touchdown? && roster.inlcudes?(phases.last.player)
+    ends_with_touchdown? && roster.includes?(phases.last.player)
   end
 
   def ends_with_tackle_while_possesion_of?(roster)
