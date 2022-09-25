@@ -8,7 +8,7 @@ RSpec.describe KickoffPhasePresenter do
     let(:kickff_phase) { Factory.new.default_kickoff_phase }
 
     it "generates text description" do
-      expect(description).to eq("[Kickoff] Kicker=Krzysiek; YardsFrom=35; YardsDiff=50; NextPhase=reception; TimeInSeconds=15;")
+      expect(description).to eq("[Kickoff] Kicker=Krzysiek; YardsFrom=35; YardsDiff=20; NextPhase=reception; TimeInSeconds=15;")
     end
   end
 
@@ -16,7 +16,7 @@ RSpec.describe KickoffPhasePresenter do
     let(:kickff_phase) do
       KickoffPhase.new(
         kicker: Player.new(position: "K", name: "Starczewski"),
-        yards_from: Yards.new(40),
+        yards_from: YardsInPitch.new(from_left: 40),
         yards_diff: Yards.new(30),
         next_phase: :reception,
         time_in_seconds: 60,

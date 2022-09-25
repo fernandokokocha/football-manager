@@ -28,9 +28,9 @@ RSpec.describe MatchGenerator do
         expect(match_generator.match.actions.first).to eq(
           Action.new(starting_team: team_1,
                      starting_yards: YardsInPitch.new(from_left: 35),
-                     ending_yards: YardsInPitch.new(from_left: 55),
+                     ending_yards: YardsInPitch.new(from_left: 25),
                      phases: [
-                       KickoffPhase.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50), next_phase: :reception, time_in_seconds: 15),
+                       KickoffPhase.new(kicker: kicker, yards_from: YardsInPitch.new(from_left: 35), yards_diff: Yards.new(20), next_phase: :reception, time_in_seconds: 15),
                        ReceptionPhase.new(player: returner, yards_diff: Yards.new(0), next_phase: :return, time_in_seconds: 0),
                        ReturnPhase.new(returner: returner, yards_diff: Yards.new(-30), next_phase: :tackle, time_in_seconds: 15),
                        TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil, time_in_seconds: 0),
@@ -52,8 +52,8 @@ RSpec.describe MatchGenerator do
         it "generates default run" do
           expect(match_generator.match.actions[1]).to eq(
             Action.new(starting_team: team_2,
-                       starting_yards: YardsInPitch.new(from_left: 55),
-                       ending_yards: YardsInPitch.new(from_left: 54),
+                       starting_yards: YardsInPitch.new(from_left: 25),
+                       ending_yards: YardsInPitch.new(from_left: 24),
                        phases: [
                          SnapPhase.new(snaper: center, yards_diff: Yards.new(10), next_phase: :run, time_in_seconds: 0),
                          RunPhase.new(runner: qb, yards_diff: Yards.new(-11), next_phase: :tackle, time_in_seconds: 30),
@@ -79,8 +79,8 @@ RSpec.describe MatchGenerator do
         it "generates default run" do
           expect(match_generator.match.actions[2]).to eq(
             Action.new(starting_team: team_2,
-                       starting_yards: YardsInPitch.new(from_left: 54),
-                       ending_yards: YardsInPitch.new(from_left: 53),
+                       starting_yards: YardsInPitch.new(from_left: 24),
+                       ending_yards: YardsInPitch.new(from_left: 23),
                        phases: [
                          SnapPhase.new(snaper: center, yards_diff: Yards.new(10), next_phase: :run, time_in_seconds: 0),
                          RunPhase.new(runner: qb, yards_diff: Yards.new(-11), next_phase: :tackle, time_in_seconds: 30),

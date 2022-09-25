@@ -2,8 +2,8 @@ class DefaultKickoffPhaseGenerator
   def call(roster_offence, roster_defence, current_yards, progress)
     KickoffPhase.new(
       kicker: roster_offence.kicker,
-      yards_from: Yards.new(Rules::KICKOFF_YARDS),
-      yards_diff: progress.to_yards(50),
+      yards_from: YardsInPitch.new(from_left: Rules::KICKOFF_YARDS),
+      yards_diff: progress.to_yards(20),
       next_phase: :reception,
       time_in_seconds: 15,
     )
@@ -20,7 +20,7 @@ class ConstantKickoffPhaseGenerator
   def call(roster_offence, roster_defence, current_yards, progress)
     KickoffPhase.new(
       kicker: roster_offence.kicker,
-      yards_from: Yards.new(Rules::KICKOFF_YARDS),
+      yards_from: YardsInPitch.new(from_left: Rules::KICKOFF_YARDS),
       yards_diff: progress.to_yards(yards_travelled),
       next_phase: :reception,
       time_in_seconds: 15,

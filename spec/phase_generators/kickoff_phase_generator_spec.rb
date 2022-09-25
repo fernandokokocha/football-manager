@@ -17,8 +17,8 @@ RSpec.describe DefaultKickoffPhaseGenerator do
       it "generates kickoff off with yards diff progress on plus" do
         expect(kickoff_phase).to eq(KickoffPhase.new(
           kicker: kicker,
-          yards_from: Yards.new(35),
-          yards_diff: Yards.new(50),
+          yards_from: YardsInPitch.new(from_left: 35),
+          yards_diff: Yards.new(20),
           next_phase: :reception,
           time_in_seconds: 15,
         ))
@@ -31,8 +31,8 @@ RSpec.describe DefaultKickoffPhaseGenerator do
       it "generates kickoff off with yards diff on minus" do
         expect(kickoff_phase).to eq(KickoffPhase.new(
           kicker: kicker,
-          yards_from: Yards.new(35),
-          yards_diff: Yards.new(-50),
+          yards_from: YardsInPitch.new(from_left: 35),
+          yards_diff: Yards.new(-20),
           next_phase: :reception,
           time_in_seconds: 15,
         ))

@@ -17,9 +17,9 @@ RSpec.describe ActionGenerator do
     it "generates kickoff off with default data" do
       expect(kickoff).to eq(Action.new(starting_team: team_1,
                                        starting_yards: YardsInPitch.new(from_left: 35),
-                                       ending_yards: YardsInPitch.new(from_left: 55),
+                                       ending_yards: YardsInPitch.new(from_left: 25),
                                        phases: [
-                                         KickoffPhase.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50), next_phase: :reception, time_in_seconds: 15),
+                                         KickoffPhase.new(kicker: kicker, yards_from: YardsInPitch.new(from_left: 35), yards_diff: Yards.new(20), next_phase: :reception, time_in_seconds: 15),
                                          ReceptionPhase.new(player: returner, yards_diff: Yards.new(0), next_phase: :return, time_in_seconds: 0),
                                          ReturnPhase.new(returner: returner, yards_diff: Yards.new(-30), next_phase: :tackle, time_in_seconds: 15),
                                          TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil, time_in_seconds: 0),
@@ -33,9 +33,9 @@ RSpec.describe ActionGenerator do
       it "generates kickoff off with different data" do
         expect(kickoff).to eq(Action.new(starting_team: team_1,
                                          starting_yards: YardsInPitch.new(from_left: 35),
-                                         ending_yards: YardsInPitch.new(from_left: 45),
+                                         ending_yards: YardsInPitch.new(from_left: 15),
                                          phases: [
-                                           KickoffPhase.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50), next_phase: :reception, time_in_seconds: 15),
+                                           KickoffPhase.new(kicker: kicker, yards_from: YardsInPitch.new(from_left: 35), yards_diff: Yards.new(20), next_phase: :reception, time_in_seconds: 15),
                                            ReceptionPhase.new(player: returner, yards_diff: Yards.new(0), next_phase: :return, time_in_seconds: 0),
                                            ReturnPhase.new(returner: returner, yards_diff: Yards.new(-40), next_phase: :tackle, time_in_seconds: 15),
                                            TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil, time_in_seconds: 0),
@@ -48,12 +48,12 @@ RSpec.describe ActionGenerator do
       let(:generators_params) { { return: return_phase_generator } }
 
       it "generates kickoff off with random data" do
-        ending_yards_num = 85 + kickoff.phases[2].yards_diff.number
+        ending_yards_num = 55 + kickoff.phases[2].yards_diff.number
         expect(kickoff).to eq(Action.new(starting_team: team_1,
                                          starting_yards: YardsInPitch.new(from_left: 35),
                                          ending_yards: YardsInPitch.new(from_left: ending_yards_num),
                                          phases: [
-                                           KickoffPhase.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50), next_phase: :reception, time_in_seconds: 15),
+                                           KickoffPhase.new(kicker: kicker, yards_from: YardsInPitch.new(from_left: 35), yards_diff: Yards.new(20), next_phase: :reception, time_in_seconds: 15),
                                            ReceptionPhase.new(player: returner, yards_diff: Yards.new(0), next_phase: :return, time_in_seconds: 0),
                                            ReturnPhase.new(returner: returner, yards_diff: YardsFromRange.new(-50, -30), next_phase: :tackle, time_in_seconds: 15),
                                            TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil, time_in_seconds: 0),
@@ -70,7 +70,7 @@ RSpec.describe ActionGenerator do
                                          starting_yards: YardsInPitch.new(from_left: 35),
                                          ending_yards: YardsInPitch.new(from_left: 20),
                                          phases: [
-                                           KickoffPhase.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(15), next_phase: :reception, time_in_seconds: 15),
+                                           KickoffPhase.new(kicker: kicker, yards_from: YardsInPitch.new(from_left: 35), yards_diff: Yards.new(15), next_phase: :reception, time_in_seconds: 15),
                                            ReceptionPhase.new(player: returner, yards_diff: Yards.new(0), next_phase: :return, time_in_seconds: 0),
                                            ReturnPhase.new(returner: returner, yards_diff: Yards.new(-30), next_phase: :tackle, time_in_seconds: 15),
                                            TacklePhase.new(yards_diff: Yards.new(0), next_phase: nil, time_in_seconds: 0),
@@ -87,9 +87,9 @@ RSpec.describe ActionGenerator do
                                          starting_yards: YardsInPitch.new(from_left: 35),
                                          ending_yards: YardsInPitch.new(from_left: 0),
                                          phases: [
-                                           KickoffPhase.new(kicker: kicker, yards_from: Yards.new(35), yards_diff: Yards.new(50), next_phase: :reception, time_in_seconds: 15),
+                                           KickoffPhase.new(kicker: kicker, yards_from: YardsInPitch.new(from_left: 35), yards_diff: Yards.new(20), next_phase: :reception, time_in_seconds: 15),
                                            ReceptionPhase.new(player: returner, yards_diff: Yards.new(0), next_phase: :return, time_in_seconds: 0),
-                                           ReturnPhase.new(returner: returner, yards_diff: Yards.new(-85), next_phase: :touchdown, time_in_seconds: 15),
+                                           ReturnPhase.new(returner: returner, yards_diff: Yards.new(-55), next_phase: :touchdown, time_in_seconds: 15),
                                            TouchdownPhase.new(player: returner, yards_diff: Yards.new(0), next_phase: nil, time_in_seconds: 0),
                                          ]))
       end
