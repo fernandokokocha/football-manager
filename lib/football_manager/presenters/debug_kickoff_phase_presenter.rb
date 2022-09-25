@@ -1,4 +1,4 @@
-class KickoffPhasePresenter
+class DebugKickoffPhasePresenter
   def present(kickoff_phase)
     description = [
       "[Kickoff]",
