@@ -1,8 +1,8 @@
 require "./spec/factories"
 
 RSpec.describe DebugKickoffPhasePresenter do
-  let(:kickoff_phase_presenter) { DebugKickoffPhasePresenter.new }
-  subject(:description) { kickoff_phase_presenter.present(kickff_phase) }
+  let(:presenter) { DebugKickoffPhasePresenter.new }
+  subject(:description) { presenter.present(kickff_phase) }
 
   describe "with default kickoff" do
     let(:kickff_phase) { Factory.new.default_kickoff_phase }

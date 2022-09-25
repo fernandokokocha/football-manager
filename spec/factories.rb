@@ -10,9 +10,14 @@ class Factory
     @progress = ProgressCountup.new
 
     @kickoff_phase_generator = DefaultKickoffPhaseGenerator.new
+    @reception_phase_generator = DefaultReceptionPhaseGenerator.new
   end
 
   def default_kickoff_phase
     @kickoff_phase_generator.call(@roster_1, @roster_2, @current_yards, @progress)
+  end
+
+  def default_reception_phase
+    @reception_phase_generator.call(@roster_1, @roster_2, @current_yards, @progress)
   end
 end
