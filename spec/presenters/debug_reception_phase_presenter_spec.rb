@@ -5,7 +5,7 @@ RSpec.describe DebugReceptionPhasePresenter do
   subject(:description) { presenter.present(reception_phase) }
 
   describe "with default reception" do
-    let(:reception_phase) { Factory.new.default_reception_phase }
+    let(:reception_phase) { Factory.new.default_phase(:reception) }
 
     it "generates text description" do
       expect(description).to eq("[Reception] Player=Robert; YardsDiff=0; NextPhase=return; TimeInSeconds=0;")

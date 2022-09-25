@@ -5,7 +5,7 @@ RSpec.describe DebugKickoffPhasePresenter do
   subject(:description) { presenter.present(kickff_phase) }
 
   describe "with default kickoff" do
-    let(:kickff_phase) { Factory.new.default_kickoff_phase }
+    let(:kickff_phase) { Factory.new.default_phase(:kickoff) }
 
     it "generates text description" do
       expect(description).to eq("[Kickoff] Kicker=Krzysiek; YardsFrom=35; YardsDiff=20; NextPhase=reception; TimeInSeconds=15;")
