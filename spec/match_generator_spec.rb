@@ -1,5 +1,3 @@
-require "football_manager"
-
 RSpec.describe MatchGenerator do
   let(:team_1) { Team.new }
   let(:team_2) { Team.new }

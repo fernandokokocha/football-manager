@@ -1,5 +1,3 @@
-require "football_manager"
-
 RSpec.describe MatchState do
   let(:match_state) { MatchState.new }
 

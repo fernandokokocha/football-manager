@@ -1,5 +1,3 @@
-require "football_manager"
-
 RSpec.describe ActionGenerator do
   describe "#generate" do
     let(:team_1) { Team.new }

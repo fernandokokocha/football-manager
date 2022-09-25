@@ -1,5 +1,3 @@
-require "football_manager"
-
 RSpec.describe DefaultKickoffPhaseGenerator do
   describe "#call" do
     let(:team_1) { Team.new }
