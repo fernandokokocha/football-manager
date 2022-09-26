@@ -30,7 +30,7 @@ class MatchGenerator
       @match_state.away_possesion_and_tackled(action.ending_yards)
     end
 
-    @match.add_action(action)
+    @match.add_action(action, next_action_setup)
   end
 
   def generate_whole

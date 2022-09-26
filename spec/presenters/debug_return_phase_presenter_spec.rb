@@ -8,7 +8,7 @@ RSpec.describe DebugReturnPhasePresenter do
     let(:return_phase) { Factory.new.default_phase(:return) }
 
     it "generates text description" do
-      expect(description).to eq("[Return] Returner=Robert; YardsDiff=30; NextPhase=tackle; TimeInSeconds=15;")
+      expect(description).to eq("[Return] Returner=Robert 2; YardsDiff=30; NextPhase=tackle; TimeInSeconds=15;")
     end
   end
 

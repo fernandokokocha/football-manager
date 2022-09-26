@@ -1,6 +1,6 @@
 require "./spec/factories"
 
-RSpec.describe DebugKickoffPhasePresenter do
+RSpec.describe DebugActionPresenter do
   let(:presenter) { DebugActionPresenter.new }
   subject(:description) { presenter.present(action) }
 
@@ -8,11 +8,10 @@ RSpec.describe DebugKickoffPhasePresenter do
     let(:action) { Factory.new.default_kickoff }
 
     it "generates text description" do
-      expect(description).to eq("=== NEW ACTION ===
-start at 35 yards
+      expect(description).to eq("start at 35 yards
 [Kickoff] Kicker=Krzysiek; YardsFrom=35; YardsDiff=20; NextPhase=reception; TimeInSeconds=15;
-[Reception] Player=Robert; YardsDiff=0; NextPhase=return; TimeInSeconds=0;
-[Return] Returner=Robert; YardsDiff=-30; NextPhase=tackle; TimeInSeconds=15;
+[Reception] Player=Robert 2; YardsDiff=0; NextPhase=return; TimeInSeconds=0;
+[Return] Returner=Robert 2; YardsDiff=-30; NextPhase=tackle; TimeInSeconds=15;
 [Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
 end of action at 25 yards")
     end
@@ -36,8 +35,7 @@ end of action at 25 yards")
     end
 
     it "generates text description" do
-      expect(description).to eq("=== NEW ACTION ===
-start at 50 yards
+      expect(description).to eq("start at 50 yards
 [Snap] Snaper=Snaper; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
 [Run] Runner=Robert; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
 [Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;

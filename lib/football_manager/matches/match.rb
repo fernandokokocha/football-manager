@@ -3,12 +3,17 @@ class Match
     @home_roster = home_roster
     @away_roster = away_roster
     @actions = []
+    @actions_with_state = []
   end
 
-  attr_reader :actions, :home_roster, :away_roster
+  attr_reader :actions, :actions_with_state, :home_roster, :away_roster
 
-  def add_action(action)
+  def add_action(action, state)
     actions << action
+    actions_with_state << {
+      action: action,
+      state: state,
+    }
   end
 
   def score

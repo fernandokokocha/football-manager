@@ -8,7 +8,7 @@ RSpec.describe DebugTouchdownPhasePresenter do
     let(:touchdown_phase) { Factory.new.default_phase(:touchdown) }
 
     it "generates text description" do
-      expect(description).to eq("[TD] Player=Robert; YardsDiff=0; NextPhase=; TimeInSeconds=0;")
+      expect(description).to eq("[TD] Player=Robert 2; YardsDiff=0; NextPhase=; TimeInSeconds=0;")
     end
   end
 

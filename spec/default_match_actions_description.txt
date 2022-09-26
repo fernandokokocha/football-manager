@@ -1,0 +1,391 @@
+Actions:
+#1
+SETUP
+kickoff
+home
+Yards 35
+ProgressCountup
+DESCRIPTION
+start at 35 yards
+[Kickoff] Kicker=Krzysiek; YardsFrom=35; YardsDiff=20; NextPhase=reception; TimeInSeconds=15;
+[Reception] Player=Robert 2; YardsDiff=0; NextPhase=return; TimeInSeconds=0;
+[Return] Returner=Robert 2; YardsDiff=-30; NextPhase=tackle; TimeInSeconds=15;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 25 yards
+#2
+SETUP
+attempt
+away
+1
+Yards 25
+ProgressCountdown
+DESCRIPTION
+start at 25 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 24 yards
+#3
+SETUP
+attempt
+away
+2
+Yards 24
+ProgressCountdown
+DESCRIPTION
+start at 24 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 23 yards
+#4
+SETUP
+attempt
+away
+3
+Yards 23
+ProgressCountdown
+DESCRIPTION
+start at 23 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 22 yards
+#5
+SETUP
+attempt
+away
+4
+Yards 22
+ProgressCountdown
+DESCRIPTION
+start at 22 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 21 yards
+#6
+SETUP
+attempt
+home
+1
+Yards 21
+ProgressCountup
+DESCRIPTION
+start at 21 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 22 yards
+#7
+SETUP
+attempt
+home
+2
+Yards 22
+ProgressCountup
+DESCRIPTION
+start at 22 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 23 yards
+#8
+SETUP
+attempt
+home
+3
+Yards 23
+ProgressCountup
+DESCRIPTION
+start at 23 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 24 yards
+#9
+SETUP
+attempt
+home
+4
+Yards 24
+ProgressCountup
+DESCRIPTION
+start at 24 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 25 yards
+#10
+SETUP
+attempt
+away
+1
+Yards 25
+ProgressCountdown
+DESCRIPTION
+start at 25 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 24 yards
+#11
+SETUP
+attempt
+away
+2
+Yards 24
+ProgressCountdown
+DESCRIPTION
+start at 24 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 23 yards
+#12
+SETUP
+attempt
+away
+3
+Yards 23
+ProgressCountdown
+DESCRIPTION
+start at 23 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 22 yards
+#13
+SETUP
+attempt
+away
+4
+Yards 22
+ProgressCountdown
+DESCRIPTION
+start at 22 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 21 yards
+#14
+SETUP
+attempt
+home
+1
+Yards 21
+ProgressCountup
+DESCRIPTION
+start at 21 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 22 yards
+#15
+SETUP
+attempt
+home
+2
+Yards 22
+ProgressCountup
+DESCRIPTION
+start at 22 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 23 yards
+#16
+SETUP
+attempt
+home
+3
+Yards 23
+ProgressCountup
+DESCRIPTION
+start at 23 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 24 yards
+#17
+SETUP
+attempt
+home
+4
+Yards 24
+ProgressCountup
+DESCRIPTION
+start at 24 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 25 yards
+#18
+SETUP
+attempt
+away
+1
+Yards 25
+ProgressCountdown
+DESCRIPTION
+start at 25 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 24 yards
+#19
+SETUP
+attempt
+away
+2
+Yards 24
+ProgressCountdown
+DESCRIPTION
+start at 24 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 23 yards
+#20
+SETUP
+attempt
+away
+3
+Yards 23
+ProgressCountdown
+DESCRIPTION
+start at 23 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 22 yards
+#21
+SETUP
+attempt
+away
+4
+Yards 22
+ProgressCountdown
+DESCRIPTION
+start at 22 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 21 yards
+#22
+SETUP
+attempt
+home
+1
+Yards 21
+ProgressCountup
+DESCRIPTION
+start at 21 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 22 yards
+#23
+SETUP
+attempt
+home
+2
+Yards 22
+ProgressCountup
+DESCRIPTION
+start at 22 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 23 yards
+#24
+SETUP
+attempt
+home
+3
+Yards 23
+ProgressCountup
+DESCRIPTION
+start at 23 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 24 yards
+#25
+SETUP
+attempt
+home
+4
+Yards 24
+ProgressCountup
+DESCRIPTION
+start at 24 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 25 yards
+#26
+SETUP
+attempt
+away
+1
+Yards 25
+ProgressCountdown
+DESCRIPTION
+start at 25 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 24 yards
+#27
+SETUP
+attempt
+away
+2
+Yards 24
+ProgressCountdown
+DESCRIPTION
+start at 24 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 23 yards
+#28
+SETUP
+attempt
+away
+3
+Yards 23
+ProgressCountdown
+DESCRIPTION
+start at 23 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 22 yards
+#29
+SETUP
+attempt
+away
+4
+Yards 22
+ProgressCountdown
+DESCRIPTION
+start at 22 yards
+[Snap] Snaper=Cezary 2; YardsDiff=10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba 2; YardsDiff=-11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 21 yards
+#30
+SETUP
+attempt
+home
+1
+Yards 21
+ProgressCountup
+DESCRIPTION
+start at 21 yards
+[Snap] Snaper=Cezary; YardsDiff=-10; NextPhase=run; TimeInSeconds=0;
+[Run] Runner=Qba; YardsDiff=11; NextPhase=tackle; TimeInSeconds=30;
+[Tackle] YardsDiff=0; NextPhase=; TimeInSeconds=0;
+end of action at 22 yards

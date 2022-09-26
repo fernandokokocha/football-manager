@@ -8,7 +8,7 @@ RSpec.describe DebugReceptionPhasePresenter do
     let(:reception_phase) { Factory.new.default_phase(:reception) }
 
     it "generates text description" do
-      expect(description).to eq("[Reception] Player=Robert; YardsDiff=0; NextPhase=return; TimeInSeconds=0;")
+      expect(description).to eq("[Reception] Player=Robert 2; YardsDiff=0; NextPhase=return; TimeInSeconds=0;")
     end
   end
 
