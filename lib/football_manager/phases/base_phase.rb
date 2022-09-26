@@ -14,4 +14,8 @@ class BasePhase
   def kickoff?
     false
   end
+
+  def type
+    self.class.to_s.delete_suffix("Phase")
+  end
 end

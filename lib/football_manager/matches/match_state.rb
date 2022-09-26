@@ -5,7 +5,6 @@ class MatchState
     @attempt = 0
     @ball_yards = YardsInPitch.new(from_left: 35)
     @first_down_marker = PseudomarkerKickoffHome.new
-    # @progress = ProgressCountup.new
   end
 
   attr_reader :team, :type, :attempt, :ball_yards, :first_down_marker, :progress
@@ -26,7 +25,6 @@ class MatchState
     @attempt = 0
     @ball_yards = YardsInPitch.new(from_right: 35)
     @first_down_marker = PseudomarkerKickoffAway.new
-    # @progress = ProgressCountdown.new
   end
 
   def home_touchdown
@@ -35,7 +33,6 @@ class MatchState
     @attempt = 0
     @ball_yards = YardsInPitch.new(from_left: 35)
     @first_down_marker = PseudomarkerKickoffHome.new
-    # @progress = ProgressCountup.new
   end
 
   def away_possesion_and_tackled(yards)

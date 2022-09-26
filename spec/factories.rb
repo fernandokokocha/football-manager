@@ -18,9 +18,22 @@ class Factory
     @snap_phase_generator = DefaultSnapPhaseGenerator.new
     @tackle_phase_generator = DefaultTacklePhaseGenerator.new
     @touchdown_phase_generator = DefaultTouchdownPhaseGenerator.new
+
+    @phase_generators = PhaseGenerators.new({})
+    @action_generator = ActionGenerator.new(@phase_generators)
   end
 
   def default_phase(phase_name)
     instance_variable_get("@#{phase_name}_phase_generator").call(@roster_1, @roster_2, @current_yards, @progress)
+  end
+
+  def default_kickoff
+    @action_generator.generate(
+      @roster_1,
+      @roster_2,
+      YardsInPitch.new(from_left: Rules::KICKOFF_YARDS),
+      :kickoff,
+      ProgressCountup.new
+    )
   end
 end
