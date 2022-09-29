@@ -22,6 +22,10 @@ class YardsInPitch
     yards.from_left > self.from_left
   end
 
+  def add(yards)
+    YardsInPitch.new(from_left: self.from_left + yards.number)
+  end
+
   def ==(o)
     self.class == o.class &&
     self.from_left == o.from_left
