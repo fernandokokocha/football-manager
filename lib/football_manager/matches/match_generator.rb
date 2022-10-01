@@ -17,8 +17,6 @@ class MatchGenerator
     next_phase = next_action_setup.type == :kickoff ? :kickoff : :snap
     starting_progress = next_action_setup.progress
 
-    puts "generate #{next_phase} #{starting_yards}"
-
     action = action_generator.generate(offence_roster, defence_roster, starting_yards, next_phase, starting_progress)
 
     # I don't trust this part
