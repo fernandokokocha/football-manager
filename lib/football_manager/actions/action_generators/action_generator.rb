@@ -7,24 +7,16 @@ class ActionGenerator
 
   def generate(offence_roster, defence_roster, starting_yards, next_phase, starting_progress)
     current_yards = starting_yards.from_left
-
     phases = []
-
     progress = starting_progress
 
-    while (next_phase != nil)
-      phase = phase_generators.send(next_phase).call(offence_roster, defence_roster, current_yards, progress)
-      phases << phase
+    action_state = ActionState.new(offence_roster, defence_roster, starting_yards, next_phase, starting_progress, phase_generators)
 
-      if (turnover?(phase))
-        progress = progress.flip
-      end
-
-      current_yards += phases.last.yards_diff.number
-      next_phase = phases.last.next_phase
+    while (action_state.continue?)
+      phases << action_state.generate_next_phase
     end
 
-    ending_yards_num = current_yards
+    ending_yards_num = action_state.yards
 
     Action.new(
       starting_team: offence_roster.team,
