@@ -31,6 +31,21 @@ class RandomRunPhaseGenerator
   end
 end
 
+class ConstantRunPhaseGenerator
+  def initialize(yards_num)
+    @yards_num = yards_num
+  end
+
+  def call(roster_offence, roster_defence, current_yards, progress)
+    RunPhase.new(
+      runner: roster_offence.qb,
+      yards_diff: progress.to_yards(@yards_num),
+      next_phase: :tackle,
+      time_in_seconds: 30,
+    )
+  end
+end
+
 class SkillBasedRunPhaseGenerator
   def call(roster_offence, roster_defence, current_yards, progress)
     runner = roster_offence.qb

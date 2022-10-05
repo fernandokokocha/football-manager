@@ -15,6 +15,10 @@ class ProgressCountup
     yards_in_pitch >= 100
   end
 
+  def counter_touchdown?(yards_in_pitch)
+    yards_in_pitch <= 0
+  end
+
   def ==(o)
     self.class == o.class
   end

@@ -10,6 +10,7 @@ class ActionState
   end
 
   attr_reader :offence_roster, :defence_roster, :yards, :next_phase, :progress, :phase_generators, :phases
+  attr_writer :next_phase
 
   def generate_next_phase
     phase = phase_generators.send(next_phase).call(offence_roster, defence_roster, @yards, progress)

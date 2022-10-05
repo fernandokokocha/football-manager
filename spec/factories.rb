@@ -29,6 +29,10 @@ class Factory
     @action_generator = ActionGenerator.new(@phase_generators)
   end
 
+  def default_action_generator
+    @action_generator
+  end
+
   def default_team_home
     @team_1
   end
@@ -62,7 +66,7 @@ class Factory
   end
 
   def default_match_actions_description
-    File.read('./spec/default_match_actions_description.txt')
+    File.read("./spec/default_match_actions_description.txt")
   end
 
   def default_match_one_action
