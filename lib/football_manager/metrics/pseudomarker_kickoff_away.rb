@@ -13,4 +13,8 @@ class PseudomarkerKickoffAway
   def starting_progress
     ProgressCountdown.new
   end
+  
+  def ==(o)
+    self.class == o.class
+  end
 end

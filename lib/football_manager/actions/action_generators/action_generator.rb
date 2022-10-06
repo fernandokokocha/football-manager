@@ -16,7 +16,6 @@ class ActionGenerator
       phase = action_state.generate_next_phase
 
       phase.yards_diff.crop_to_pitch(current_yards)
-      phase.debug
 
       current_yards = current_yards.add_diff(phase.yards_diff)
 

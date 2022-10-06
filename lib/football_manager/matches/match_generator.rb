@@ -15,7 +15,7 @@ class MatchGenerator
     defence_roster = next_action_setup.team == :home ? away_roster : home_roster
     starting_yards = next_action_setup.ball_yards
     next_phase = next_action_setup.type == :kickoff ? :kickoff : :snap
-    starting_progress = next_action_setup.progress
+    starting_progress = next_action_setup.first_down_marker.starting_progress
 
     action = action_generator.generate(offence_roster, defence_roster, starting_yards, next_phase, starting_progress)
 

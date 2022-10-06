@@ -14,17 +14,17 @@ class DebugMatchPresenter
       "Actions:",
     ]
 
-    match.actions_with_state.each_with_index do |actions_with_state, index|
-      action = actions_with_state[:action]
-      state = actions_with_state[:state]
+    match.actions_with_setup.each_with_index do |actions_with_setup, index|
+      action = actions_with_setup[:action]
+      setup = actions_with_setup[:setup]
 
       lines << "##{index + 1}"
       lines << "SETUP"
-      lines << "#{state.type}"
-      lines << "#{state.team}"
-      lines << "#{state.attempt}" if (state.type != :kickoff)
-      lines << "Yards #{state.ball_yards.from_left}"
-      lines << "#{state.progress.class.name}"
+      lines << "#{setup.type}"
+      lines << "#{setup.team}"
+      lines << "#{setup.attempt}" if (setup.type != :kickoff)
+      lines << "Yards #{setup.ball_yards.from_left}"
+      lines << "#{setup.first_down_marker.starting_progress.class.name}"
       lines << "DESCRIPTION"
 
       lines += @action_presenter.lines(action)

@@ -13,4 +13,9 @@ class MarkerCountdown
   def starting_progress
     ProgressCountdown.new
   end
+
+  def ==(o)
+    self.class == o.class &&
+      self.first_down_yards == o.first_down_yards
+  end
 end

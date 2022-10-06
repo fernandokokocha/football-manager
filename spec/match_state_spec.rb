@@ -8,7 +8,7 @@ RSpec.describe MatchState do
       team: :home,
       type: :kickoff,
       ball_yards: YardsInPitch.new(from_left: 35),
-      progress: ProgressCountup.new,
+      first_down_marker: PseudomarkerKickoffHome.new,
     ))
   end
 
@@ -22,7 +22,7 @@ RSpec.describe MatchState do
         team: :away,
         type: :kickoff,
         ball_yards: YardsInPitch.new(from_right: 35),
-        progress: ProgressCountdown.new,
+        first_down_marker: PseudomarkerKickoffAway.new,
       ))
     end
   end
@@ -37,7 +37,7 @@ RSpec.describe MatchState do
         team: :home,
         type: :kickoff,
         ball_yards: YardsInPitch.new(from_left: 35),
-        progress: ProgressCountup.new,
+        first_down_marker: PseudomarkerKickoffHome.new,
       ))
     end
   end
@@ -54,7 +54,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 40),
-          progress: ProgressCountdown.new,
+          first_down_marker: MarkerCountdown.new(first_down_yards: YardsInPitch.new(from_left: 40)),
         ))
       end
     end
@@ -71,7 +71,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 2,
           ball_yards: YardsInPitch.new(from_left: 39),
-          progress: ProgressCountdown.new,
+          first_down_marker: MarkerCountdown.new(first_down_yards: YardsInPitch.new(from_left: 39)),
         ))
       end
     end
@@ -89,7 +89,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 3,
           ball_yards: YardsInPitch.new(from_left: 38),
-          progress: ProgressCountdown.new,
+          first_down_marker: MarkerCountdown.new(first_down_yards: YardsInPitch.new(from_left: 38)),
         ))
       end
     end
@@ -108,7 +108,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 4,
           ball_yards: YardsInPitch.new(from_left: 37),
-          progress: ProgressCountdown.new,
+          first_down_marker: MarkerCountdown.new(first_down_yards: YardsInPitch.new(from_left: 37)),
         ))
       end
     end
@@ -128,10 +128,11 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 36),
-          progress: ProgressCountup.new,
+          first_down_marker: MarkerCountup.new(first_down_yards: YardsInPitch.new(from_left: 36)),
         ))
       end
     end
+
     describe "when two tackles and first down gained" do
       before(:each) do
         match_state.away_possesion_and_tackled(YardsInPitch.new(from_left: 40))
@@ -144,7 +145,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 25),
-          progress: ProgressCountdown.new,
+          first_down_marker: MarkerCountdown.new(first_down_yards: YardsInPitch.new(from_left: 25)),
         ))
       end
     end
@@ -162,7 +163,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 2,
           ball_yards: YardsInPitch.new(from_left: 20),
-          progress: ProgressCountdown.new,
+          first_down_marker: MarkerCountdown.new(first_down_yards: YardsInPitch.new(from_left: 20)),
         ))
       end
     end
@@ -180,7 +181,7 @@ RSpec.describe MatchState do
           type: :kickoff,
           attempt: 0,
           ball_yards: YardsInPitch.new(from_right: 35),
-          progress: ProgressCountdown.new,
+          first_down_marker: PseudomarkerKickoffAway.new,
         ))
       end
     end
@@ -198,7 +199,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 40),
-          progress: ProgressCountup.new,
+          first_down_marker: MarkerCountup.new(first_down_yards: YardsInPitch.new(from_left: 40)),
         ))
       end
     end
@@ -216,7 +217,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 20),
-          progress: ProgressCountup.new,
+          first_down_marker: MarkerCountup.new(first_down_yards: YardsInPitch.new(from_left: 20)),
         ))
       end
     end
@@ -234,7 +235,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 40),
-          progress: ProgressCountup.new,
+          first_down_marker: MarkerCountup.new(first_down_yards: YardsInPitch.new(from_left: 40)),
         ))
       end
     end
@@ -251,7 +252,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 2,
           ball_yards: YardsInPitch.new(from_left: 41),
-          progress: ProgressCountup.new,
+          first_down_marker: MarkerCountup.new(first_down_yards: YardsInPitch.new(from_left: 41)),
         ))
       end
     end
@@ -269,7 +270,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 3,
           ball_yards: YardsInPitch.new(from_left: 42),
-          progress: ProgressCountup.new,
+          first_down_marker: MarkerCountup.new(first_down_yards: YardsInPitch.new(from_left: 42)),
         ))
       end
     end
@@ -288,7 +289,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 4,
           ball_yards: YardsInPitch.new(from_left: 43),
-          progress: ProgressCountup.new,
+          first_down_marker: MarkerCountup.new(first_down_yards: YardsInPitch.new(from_left: 43)),
         ))
       end
     end
@@ -308,7 +309,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 44),
-          progress: ProgressCountdown.new,
+          first_down_marker: MarkerCountdown.new(first_down_yards: YardsInPitch.new(from_left: 44)),
         ))
       end
     end
@@ -325,7 +326,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 55),
-          progress: ProgressCountup.new,
+          first_down_marker: MarkerCountup.new(first_down_yards: YardsInPitch.new(from_left: 55)),
         ))
       end
     end
@@ -343,7 +344,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 2,
           ball_yards: YardsInPitch.new(from_left: 60),
-          progress: ProgressCountup.new,
+          first_down_marker: MarkerCountup.new(first_down_yards: YardsInPitch.new(from_left: 60)),
         ))
       end
     end
@@ -361,7 +362,7 @@ RSpec.describe MatchState do
           type: :kickoff,
           attempt: 0,
           ball_yards: YardsInPitch.new(from_left: 35),
-          progress: ProgressCountup.new,
+          first_down_marker: PseudomarkerKickoffHome.new,
         ))
       end
     end
@@ -379,7 +380,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 40),
-          progress: ProgressCountdown.new,
+          first_down_marker: MarkerCountdown.new(first_down_yards: YardsInPitch.new(from_left: 40)),
         ))
       end
     end
@@ -397,7 +398,7 @@ RSpec.describe MatchState do
           type: :attempt,
           attempt: 1,
           ball_yards: YardsInPitch.new(from_left: 60),
-          progress: ProgressCountdown.new,
+          first_down_marker: MarkerCountdown.new(first_down_yards: YardsInPitch.new(from_left: 60)),
         ))
       end
     end

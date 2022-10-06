@@ -15,7 +15,7 @@ class MatchState
       type: type,
       attempt: attempt,
       ball_yards: ball_yards,
-      progress: first_down_marker.starting_progress,
+      first_down_marker: first_down_marker,
     )
   end
 
